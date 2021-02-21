@@ -11,4 +11,11 @@ public partial class admin_admin : System.Web.UI.MasterPage
     {
 
     }
+    protected void btn_logout(object sender, EventArgs e)
+    {
+        Session.Abandon();
+        Session.Clear();
+        Response.Cookies.Clear();
+        Response.Redirect("AdminLogin.aspx");
+    }
 }

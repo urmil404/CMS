@@ -14,4 +14,8 @@ public partial class Admission : System.Web.UI.Page
     {
         con = Helper.getCon();
     }
+    protected void btn_Signup_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("admission");   
+    }
 }
