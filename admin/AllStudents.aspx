@@ -8,7 +8,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
-
     <html xmlns="http://www.w3.org/1999/xhtml">
     <body>
         <div class="container mt-4 font-weight-bold">
@@ -43,20 +42,24 @@
                 <% } %>
                 <% else %>
                 <% { %>
-                <div class="col-12 text-center">
-                    <h1>Student Profile</h1>
-                    <div class="form-group row mt-4 mb-4">
-                        <div class="col-4 offset-2">
-                            <label>GrNo</label>
-                            <asp:TextBox ID="student_Grno" runat="server" CssClass="form-control"></asp:TextBox>
+             
+                <script>
+                    function ss() {
+                        location.href = "AllStudents.aspx?gr="+document.getElementById("gr").value;
+                    }
+                </script>
+                    <div class="col-12 text-center">
+                        <h1>Student Profile</h1>
+                        <div class="form-group row mt-4 mb-4">
+                            <div class="col-4 offset-2">
+                                <label>GrNo</label>
+                                <%--<asp:TextBox ID="student_Grno" runat="server" CssClass="form-control"></asp:TextBox>--%>
+                                <input type="text" id="gr" name="grno" class="form-control"/>
+                            </div>
                         </div>
-                        <div class="col-4">
-                            <label>Password</label>
-                            <asp:TextBox ID="student_password" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
+                        <%--<asp:Button ID="login" runat="server" Text="Show Profile" CssClass="btn btn-success btn-lg" OnClick="login_Click" />--%>
+                        <button type="button" onclick="ss" class="btn btn-success btn-lg">Show Profile</button>
                     </div>
-                    <asp:Button ID="login" runat="server" Text="Show Profile" CssClass="btn btn-success btn-lg" OnClick="login_Click" />
-                </div>
                 <% } %>
 
                 <% if (Session["S_Id"] == null || edit_mode) %>
@@ -156,7 +159,7 @@
                             <label for="student_category" class="form-label">Category</label>
                             <asp:DropDownList runat="server" ID="student_category"
                                 CssClass="form-control">
-                                <asp:ListItem Value="">General</asp:ListItem>
+                                <asp:ListItem>General</asp:ListItem>
                                 <asp:ListItem>OBC</asp:ListItem>
                                 <asp:ListItem>ST/SC</asp:ListItem>
                                 <asp:ListItem>Other</asp:ListItem>
@@ -171,7 +174,7 @@
                             <label for="student_nationality" class="form-label">Nationality</label>
                             <asp:DropDownList runat="server" ID="student_nationality"
                                 CssClass="form-control">
-                                <asp:ListItem Value="">India</asp:ListItem>
+                                <asp:ListItem>India</asp:ListItem>
                                 <asp:ListItem>USA</asp:ListItem>
                                 <asp:ListItem>Austrelia</asp:ListItem>
                                 <asp:ListItem>Canada</asp:ListItem>
@@ -229,8 +232,7 @@
             </div>
             <% } %>
         </div>
-        </div>
-   
+        </div>   
     </body>
 
     </html>
@@ -238,76 +240,123 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>GrNo</th>
                     <th>Name</th>
-                    <th>Mobile</th>
-                    <th>Username</th>
-                    <th>Password</th>
+                    <!-- <th>Email</th> -->
+                    <!-- <th>Mobile</th> -->
+                    <th>password</th>
                     <th>DOB</th>
-                    <th>City</th>
-                    <th>Pincode</th>
-                    <th>Address</th>
+                    <!-- <th>City</th> -->
+                    <!-- <th>Pincode</th> -->
+                    <th>Contact Details</th>
+                    <!-- <th>Address</th> -->
+                    <th>Gender</th>
+                    <th>Category</th>
+                    <th>Nationality</th>
+                    <th>stream</th>
+                    <th>program</th>
                     <th>Profile</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
-                    <th>ID</th>
+                    <th>GrNo</th>
                     <th>Name</th>
-                    <th>Mobile</th>
-                    <th>Username</th>
-                    <th>Password</th>
+                    <!-- <th>Email</th> -->
+                    <!-- <th>Mobile</th> -->
+                    <th>password</th>
                     <th>DOB</th>
-                    <th>City</th>
-                    <th>Pincode</th>
-                    <th>Address</th>
+                    <!-- <th>City</th> -->
+                    <!-- <th>Pincode</th> -->
+                    <th>Contact Details</th>
+                    <!-- <th>Address</th> -->
+                    <th>Gender</th>
+                    <th>Category</th>
+                    <th>Nationality</th>
+                    <th>stream</th>
+                    <th>program</th>
                     <th>Profile</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
             </tfoot>
             <tbody>
-                <% SqlDataReader reader = Helper.myInsert("SELECT * FROM students");
+                <% SqlDataReader reader = Helper.myInsert("SELECT * FROM student_Profile ORDER BY S_Id DESC");
                    while (reader.Read())
                    { %>
-                <tr>
+                <td>
+                    <%= "2021"+reader["S_GrNo"].ToString().Trim() %>
+                </td>
+                <td>
+                    <%= reader["S_FullName"].ToString().Trim() %>
+                </td>
+                <%--  <td>
+                    <%= reader["S_Email"].ToString().Trim() %>
+                </td>
                     <td>
-                        <%= reader["student_id"].ToString().Trim() %>
-                    </td>
-                    <td>
-                        <%= reader["student_name"].ToString().Trim() %>
-                    </td>
-                    <td>
-                        <%= reader["student_email"].ToString().Trim() %>
-                    </td>
-                    <td>
-                        <%= reader["student_password"].ToString().Trim() %>
-                    </td>
-                    <td>
-                        <%= reader["student_mobile"].ToString().Trim() %>
-                    </td>
-                    <td>
-                        <%= reader["student_stream"].ToString().Trim() %>
-                    </td>
-                    <td>
-                        <%= reader["student_programs"].ToString().Trim() %>
-                    </td>
-                    <td>
-                        <%= reader["student_gender"].ToString().Trim() %>
-                    </td>
-                    <td>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <a class="myedit" href="add-students.aspx?edit=<%= reader["student_id"].ToString().Trim() %>"><i class="btn btn-primary">Edit</i></a>
-                                </a>
-                            </div>
+                        <%= reader["S_Mobile"].ToString().Trim() %>
+                    </td>--%>
+                <td>
+                    <%= reader["S_Password"].ToString().Trim() %>
+                </td>
+                <td>
+                    <%= reader["S_Dob"].ToString().Trim() %>
+                </td>
+                <%--<td>
+                    <%= reader["S_City"].ToString().Trim() %>
+                </td>
+                <td>
+                    <%= reader["S_Pincode"].ToString().Trim() %>
+                </td>--%>
+                <td class="text-left">
+                    <b>Mobile :</b><br>
+                    <%= reader["S_Mobile"].ToString().Trim() %><br>
+                    <b>Email :</b><br>
+                    <%= reader["S_Email"].ToString().Trim() %><br>
+                    <b>City :</b><br>
+                    <%= reader["S_City"].ToString().Trim() %><br>
+                    <b>Address :</b><br>
+                    <%= reader["S_Address"].ToString().Trim() %>
+                </td>
+                <%--  <td>
+                    <%= reader["S_Address"].ToString().Trim() %>
+                </td>--%>
+                <td>
+                    <%= reader["S_Gender"].ToString().Trim() %>
+                </td>
+                <td>
+                    <%= reader["S_Category"].ToString().Trim() %>
+                </td>
+                <td>
+                    <%= reader["S_Nationality"].ToString().Trim() %>
+                </td>
+                <td>
+                    <%= reader["S_Stream"].ToString().Trim() %>
+                </td>
+                <td>
+                    <%= reader["S_Program"].ToString().Trim() %>
+                </td>
+
+                <td>
+                    <img src="student_profile/<%=reader["S_profile"].ToString().Trim() %>" alt="" height="120" width="120">
+                </td>
+                <td>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <a class="myedit" href="AllStudents.aspx?edit=<%= reader["S_Id"].ToString().Trim() %>"><i class="btn btn-primary">Edit</i></a>
+                            </a>
                         </div>
-                    </td>
-                    <td>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <a class="delete" href="add-students.aspx?delete=<%= reader["student_id"].ToString().Trim() %>"><i class="btn btn-danger">Delete</i></a>
-                            </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <a class="delete" href="AllStudents.aspx?delete=<%= reader["S_Id"].ToString().Trim() %>"><i class="btn btn-danger">Delete</i></a>
                         </div>
-                    </td>
+                    </div>
+                </td>
                 </tr>
                 <% } %>
             </tbody>

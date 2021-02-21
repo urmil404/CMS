@@ -85,9 +85,9 @@ public partial class admin_AllStudents : System.Web.UI.Page
         cmd.Parameters.AddWithValue("@stream", stream);
         cmd.Parameters.AddWithValue("@programs", programs);
         cmd.Parameters.AddWithValue("@grno", grno);
-        
+
         int sid = (int)cmd.ExecuteScalar();
-        
+
         String pro = "photo.png";
         if (f_pro.HasFile)
         {
@@ -98,30 +98,7 @@ public partial class admin_AllStudents : System.Web.UI.Page
         cmd.ExecuteNonQuery();
         home("Registration Successfully, Now You Can See Profile..");
     }
-
-    protected void login_Click(object sender, EventArgs e)
-    {
-        cmd = new SqlCommand("SELECT S_Id, S_Name, S_Password, S_Profile FROM student_Profile WHERE S_GrNo = '" + student_Grno.Text + "'", con);
-        dr = cmd.ExecuteReader();
-        if (dr.Read())
-        {
-            if (String.Compare(m(dr["S_Password"]), m(student_password.Text)) == 0)
-            {
-                Session["S_Id"] = dr["S_Id"];
-                Session["S_Name"] = m(dr["S_Name"]);
-                Session["pro"] = m(dr["S_Profile"]);
-                home("Login Successfully");
-            }
-            else
-            {
-                home("Invalid Password");
-            }
-        }
-        else
-        {
-            home("Username Not Found");
-        }
-    }
+    
     protected void b_upd_Click(object sender, EventArgs e)
     {
         String Fname = student_FullName.Text.ToString();
@@ -199,6 +176,13 @@ public partial class admin_AllStudents : System.Web.UI.Page
             student_program.Text = m(dr["S_Program"]);
         }
         dr.Close();
+    }
+
+    protected void Delete_Record()
+    {
+        // delete student record
+        int res = Helper.MyNoQ("DELETE FROM student_Profile WHERE S_Id = '" + Request.QueryString["delete"].ToString().Trim() + "'");
+        Helper.setSmsg("Record Delete Successfully.");
     }
 
     protected void b_logout_Click(object sender, EventArgs e)

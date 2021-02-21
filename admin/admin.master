@@ -34,7 +34,7 @@
                     <a class="nav-link" href="Default.aspx">Welcome, <b>admin</b></a>
                 </li class="nav-item">
                 <li>
-                <asp:Button CssClass="btn btn-outline-danger ml-3 pr-3 pl-3" OnClick="btn_logout" Text="Logout" runat="server" />
+                <a href="AdminLogout.aspx"><Button ty class="btn btn-outline-danger ml-3 pr-3 pl-3">Logout</Button></a>
                 </li>
         </nav>
         <!-- Sidebar Admin Pannel -->
@@ -81,11 +81,7 @@
     </form>
     <%-- Footer --%>
     <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Urmil Rupareliya 2020</div>
-            </div>
-        </div>
+       
     </footer>
     </div>
     </div>
