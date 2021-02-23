@@ -61,95 +61,181 @@
                         <img src="public/assets/images/logo-white-2.png" alt=""></a>
                 </div>
                 <div class="account-form-inner">
-                    <div class="account-container">
-                        <div class="heading-bx left">
-                            <h2 class="title-head">SignUp to your <span>Account</span></h2>
-                            <p>Already have an account? <a href="login.aspx">Login here</a></p>
-                        </div>
-                        <div class="container">
-                            <form class="row g-3 needs-validation" novalidate runat="server">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <label class=" form-label">Full name</label>
-                                                <asp:TextBox CssClass="form-control" ID="student_username" runat="server"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="rfv_Fname" runat="server" ErrorMessage="* Full Name is Required" CssClass="text-valid text-danger pl-2" ControlToValidate="student_username" Display="Dynamic"></asp:RequiredFieldValidator>
-                                            </div>
-                                            <div class="col-6">
-                                                <label for="student_email" class="form-label">Email</label>
-                                                <asp:TextBox CssClass="form-control" ID="student_email" runat="server"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="rfv_Email" runat="server" ErrorMessage="* Your Email Address id Required" CssClass="text-valid text-danger pl-2" ControlToValidate="student_email" Display="Dynamic"></asp:RequiredFieldValidator>
-                                            </div>
-                                            <div class="col-6 my-3">
-                                                <label>Your Password</label>
-                                                <asp:TextBox TextMode="Password" CssClass="form-control"
-                                                    ID="student_password" runat="server"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="rfv_Password" runat="server" ErrorMessage="* Your Password is Required" CssClass="text-valid text-danger pl-2" ControlToValidate="student_Password" Display="Dynamic"></asp:RequiredFieldValidator>
 
-                                            </div>
-                                            <div class="col-6 my-3">
-                                                <label for="student_mobile" class="form-label">Mobile</label>
-                                                <asp:TextBox CssClass="form-control" ID="student_mobile" runat="server"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="rfv_Moible" runat="server" ErrorMessage="* Your Mobile Number is Required" CssClass="text-valid text-danger pl-2" ControlToValidate="student_Mobile" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <div class="container mt-4 font-weight-bold">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="alert alert-warning alert-dismissible fade text-center show" role="alert">
+                                    <%= Session["msg"] %>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <d class="col-md-3 col-sm-4 col-6 offset-md-0 offset-sm-4 offset-3">
+                    <style>
+                        .btn-container .btn {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            -ms-transform: translate(-50%, -50%);
+                            visibility: hidden;
+                        }
 
-                                            </div>
-                                            <div class="col-4 my-3">
-                                                <label for="student_gender" class="form-label">Gender</label>
-                                                <asp:DropDownList runat="server" ID="student_gender" CssClass="form-select">
-                                                    <asp:ListItem Value="">Gender..</asp:ListItem>
-                                                    <asp:ListItem>Male</asp:ListItem>
-                                                    <asp:ListItem>Female</asp:ListItem>
-                                                    <asp:ListItem>Other</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <asp:RequiredFieldValidator ID="rfv_Gender" runat="server" ErrorMessage="* Please Select Gender" CssClass="text-valid text-danger pl-2" ControlToValidate="student_gender" Display="Dynamic"></asp:RequiredFieldValidator>
-                                            </div>
-                                            <div class="col-4 my-3">
-                                                <label for="student_stream" class="form-label">Stream</label>
-                                                <asp:DropDownList runat="server" ID="student_stream">
-                                                    <asp:ListItem Value="">Stream..</asp:ListItem>
-                                                    <asp:ListItem>Science</asp:ListItem>
-                                                    <asp:ListItem>Commerce</asp:ListItem>
-                                                    <asp:ListItem>Arts</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <asp:RequiredFieldValidator ID="rfv_stream" runat="server" ErrorMessage="* Please Select Stream" CssClass="text-valid text-danger pl-2" ControlToValidate="student_stream" Display="Dynamic"></asp:RequiredFieldValidator>
-                                            </div>
-                                            <div class="col-4 my-3">
-                                                <label for="student_program" class="form-label">Course</label>
-                                                <asp:DropDownList runat="server" CssClass="form-control" ID="student_program">
-                                                    <asp:ListItem Value="">Course..</asp:ListItem>
-                                                    <asp:ListItem>BCA</asp:ListItem>
-                                                    <asp:ListItem>BBA</asp:ListItem>
-                                                    <asp:ListItem>Bcom</asp:ListItem>
-                                                    <asp:ListItem>Bsc-IT</asp:ListItem>
-                                                </asp:DropDownList>
-                                                <asp:RequiredFieldValidator ID="rfv_course" runat="server" ErrorMessage="* Please Select Course" CssClass="text-valid text-danger pl-2" ControlToValidate="student_program" Display="Dynamic"></asp:RequiredFieldValidator>
-                                            </div>
-                                            <div class="col-12 mt-4">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                                                    <label class="form-check-label" for="invalidCheck">
-                                                        Agree to terms and conditions
-                                                    </label>
-                                                    <div class="invalid-feedback">
-                                                        You must agree before submitting.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 mt-4">
-                                                <asp:Button CssClass="btn btn-primary" Text="Submit" runat="server" OnClick="btn_signup_Click" ID="btn_signup" />
-                                            </div>
-                                        </div>
+                        .btn-container:hover .btn {
+                            visibility: visible;
+                        }
+                    </style>
+                    <div class="btn-container" style="position: relative;">
+                        <img src="student_profile/<%= Session["pro"] %>" id="pro" class="w-100" style="border-radius: 50%" />
+                        <button class="btn btn-success btn-sm" onclick="document.getElementById('ContentPlaceHolder1_f_pro').click()" type="button">Change</button>
+                        <asp:FileUpload ID="f_pro" runat="server" CssClass="d-none" />
+                    </div>
+                    <script>
+                        var fr = new FileReader();
+                        fr.onload = function (e) {
+                            document.getElementById("pro").src = this.result;
+                        };
+                        document.getElementById("ContentPlaceHolder1_f_pro").addEventListener("change", function () {
+                            fr.readAsDataURL(this.files[0]);
+                        });
+                    </script>
+                </d>
+
+                            <div class="col-md-9">
+                                <div class="form-group row">
+                                    <div class="col-xl-4 col-sm-6 mt-3">
+                                        <label>FullName</label>
+                                        <asp:TextBox ID="student_FullName" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                    <div class="col-xl-4 col-sm-6 mt-3">
+                                        <label>Father FullName</label>
+                                        <asp:TextBox ID="student_Father_FullName" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                    <div class="col-xl-4 col-sm-6 mt-3">
+                                        <label>Father Occupation</label>
+                                        <asp:TextBox ID="student_FatherOccupation" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                    <div class="col-xl-4 col-sm-6 mt-3">
+                                        <label>Email</label>
+                                        <asp:TextBox ID="student_email" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                    <div class="col-xl-4 col-sm-6 mt-3">
+                                        <label>Mobile</label>
+                                        <asp:TextBox ID="student_mobile" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+                                    </div>
+                                    <div class="col-xl-4 col-sm-6 mt-3">
+                                        <label>Password</label>
+                                        <asp:TextBox ID="student_pass" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                    <div class="col-xl-4 col-sm-6 mt-3">
+                                        <label>DOB</label>
+                                        <asp:TextBox ID="student_dob" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                                    </div>
+                                    <div class="col-xl-4 col-sm-6 mt-3">
+                                        <label>City</label>
+                                        <asp:TextBox ID="student_city" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                    <div class="col-xl-4 col-sm-6 mt-3">
+                                        <label>Pincode</label>
+                                        <asp:TextBox ID="student_pin" runat="server" CssClass="form-control" TextMode="Number"></asp:TextBox>
+                                    </div>
+                                    <div class="col-xl-8 col-sm-6 mt-3">
+                                        <label>Address</label>
+                                        <asp:TextBox ID="student_add" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
+                                    </div>
+                                    <div class="col-xl-4 col-sm-6 mt-3">
+                                        <label for="student_gender" class="form-label">Gender</label>
+                                        <asp:DropDownList runat="server" ID="student_gender"
+                                            CssClass="form-control">
+                                            <asp:ListItem Value="">Gender..</asp:ListItem>
+                                            <asp:ListItem>Male</asp:ListItem>
+                                            <asp:ListItem>Female</asp:ListItem>
+                                            <asp:ListItem>Other</asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="rfv_Gender" runat="server"
+                                            ErrorMessage="* Please Select Gender"
+                                            CssClass="text-valid text-danger pl-2"
+                                            ControlToValidate="student_gender" Display="Dynamic">
+                                        </asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="col-xl-4 col-sm-6 mt-3">
+                                        <label for="student_category" class="form-label">Category</label>
+                                        <asp:DropDownList runat="server" ID="student_category"
+                                            CssClass="form-control">
+                                            <asp:ListItem>General</asp:ListItem>
+                                            <asp:ListItem>OBC</asp:ListItem>
+                                            <asp:ListItem>ST/SC</asp:ListItem>
+                                            <asp:ListItem>Other</asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="rfv_category" runat="server"
+                                            ErrorMessage="* Please Select Category"
+                                            CssClass="text-valid text-danger pl-2"
+                                            ControlToValidate="student_category" Display="Dynamic">
+                                        </asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="col-xl-4 col-sm-6 mt-3">
+                                        <label for="student_nationality" class="form-label">Nationality</label>
+                                        <asp:DropDownList runat="server" ID="student_nationality"
+                                            CssClass="form-control">
+                                            <asp:ListItem>India</asp:ListItem>
+                                            <asp:ListItem>USA</asp:ListItem>
+                                            <asp:ListItem>Austrelia</asp:ListItem>
+                                            <asp:ListItem>Canada</asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="rfv_nationality" runat="server"
+                                            ErrorMessage="* Please Select Nationality"
+                                            CssClass="text-valid text-danger pl-2"
+                                            ControlToValidate="student_nationality" Display="Dynamic">
+                                        </asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="col-xl-4 col-sm-6 mt-3">
+                                        <label for="student_stream" class="form-label">Stream</label>
+                                        <asp:DropDownList runat="server" ID="student_stream"
+                                            CssClass="form-control">
+                                            <asp:ListItem Value="">Stream..</asp:ListItem>
+                                            <asp:ListItem>Science</asp:ListItem>
+                                            <asp:ListItem>Commerce</asp:ListItem>
+                                            <asp:ListItem>Arts</asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="rfv_Stream" runat="server"
+                                            ErrorMessage="* Please Select Stream"
+                                            CssClass="text-valid text-danger pl-2"
+                                            ControlToValidate="student_stream" Display="Dynamic">
+                                        </asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="col-xl-4 col-sm-6 mt-3">
+                                        <label for="student_program" class="form-label">Course</label>
+                                        <asp:DropDownList runat="server" CssClass="form-control"
+                                            ID="student_program">
+                                            <asp:ListItem Value="">Course..</asp:ListItem>
+                                            <asp:ListItem>BCA</asp:ListItem>
+                                            <asp:ListItem>BBA</asp:ListItem>
+                                            <asp:ListItem>Bcom</asp:ListItem>
+                                            <asp:ListItem>Bsc-IT</asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="rfv_course" runat="server"
+                                            ErrorMessage="* Please Select Program"
+                                            CssClass="text-valid text-danger pl-2"
+                                            ControlToValidate="student_program" Display="Dynamic">
+                                        </asp:RequiredFieldValidator>
+                                    </div>
+                                    <div class="col-xl-4 col-sm-6 mt-3">
+                                        <label>GrNo</label>
+                                        <asp:TextBox ID="txt_Grno" runat="server" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
+                        </div>
+
+                        <div class="col-12 text-center my-5">
+                            <asp:Button ID="b_reg" runat="server" Text="Register" CssClass="btn btn-success btn-lg" OnClick="b_reg_Click" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
 
         </div>
 		</div>
@@ -178,9 +264,9 @@
                 swal({
                     title: "Error",
                     text: "<%= String.Join("\\n", (String[]) Session["amsg"]) %>",
-					icon: "error"
-				});
-			});
+                    icon: "error"
+                });
+            });
             <%
                 Session["amsg"] = null;
             }
@@ -193,9 +279,9 @@
                 swal({
                     title: "Success",
                     text: "<%= String.Join("\\n", (String[]) Session["smsg"]) %>",
-					icon: "success"
-				});
-			});
+                    icon: "success"
+                });
+            });
             <%
                 Session["smsg"] = null;
             }

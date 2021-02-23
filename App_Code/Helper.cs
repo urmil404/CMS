@@ -25,7 +25,7 @@ public static class Helper
 		}
 		return con;
 	}
-
+    
 	public static int Scaller(String qry)
 	{
 		SqlCommand cmd = new SqlCommand(qry, getCon());

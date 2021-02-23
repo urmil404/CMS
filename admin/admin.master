@@ -23,7 +23,6 @@
 
 <body class="sb-nav-fixed">
 
-    <form id="form1" runat="server">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="Default.aspx">CMS Dashboard</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
@@ -73,12 +72,17 @@
                 </nav>
             </div>
             <div id="layoutSidenav_content">
+                <asp:ContentPlaceHolder ID="Content_BForm" runat="server">
+                    </asp:ContentPlaceHolder>
+            <form id="form1" runat="server">
                 <div>
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    <asp:ContentPlaceHolder ID="Content_Form" runat="server">
                     </asp:ContentPlaceHolder>
                 </div>
+            </form>
+                <asp:ContentPlaceHolder ID="Content_AForm" runat="server">
+                    </asp:ContentPlaceHolder>
             </div>
-    </form>
     <%-- Footer --%>
     <footer class="py-4 bg-light mt-auto">
        
@@ -105,9 +109,9 @@
             swal({
                 title: "Error",
                 text: "<%= String.Join("\\n", (String[]) Session["amsg"]) %>",
-	            icon: "error"
-	        });
-	    });
+                icon: "error"
+            });
+        });
         <%
             Session["amsg"] = null;
         }
@@ -120,9 +124,9 @@
             swal({
                 title: "Success",
                 text: "<%= String.Join("\\n", (String[]) Session["smsg"]) %>",
-	            icon: "success"
-	        });
-	    });
+                icon: "success"
+            });
+        });
         <%
             Session["smsg"] = null;
         }
