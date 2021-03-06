@@ -26,16 +26,16 @@
                     }
                 </style>
                 <div class="btn-container" style="position: relative;">
-                    <img src="student_profile/<%= Session["pro"] %>" id="pro" class="w-100" style="border-radius: 50%" />
-                    <button class="btn btn-success btn-sm" onclick="document.getElementById('ContentPlaceHolder1_f_pro').click()" type="button">Change</button>
+                    <img  runat="server"  ID="stdimage" class="w-100" style="border-radius: 50%" />
+                    <button class="btn btn-success btn-sm" onclick="document.getElementById('<%= f_pro.ClientID %>').click()" type="button">Change</button>
                     <asp:FileUpload ID="f_pro" runat="server" CssClass="d-none" />
                 </div>
                 <script>
                     var fr = new FileReader();
                     fr.onload = function (e) {
-                        document.getElementById("pro").src = this.result;
+                        document.getElementById("<%= stdimage.ClientID %>").src = this.result;
                     };
-                    document.getElementById("ContentPlaceHolder1_f_pro").addEventListener("change", function () {
+                    document.getElementById("<%= f_pro.ClientID %>").addEventListener("change", function () {
                         fr.readAsDataURL(this.files[0]);
                     });
                 </script>
@@ -207,7 +207,7 @@
                     <%= "2021"+reader["S_GrNo"].ToString().Trim() %>
                 </td>
                 <td>
-                    <img src="student_profile/<%=reader["S_profile"].ToString().Trim() %>" alt="" height="120" width="120">
+                    <img src="../public/student_profile/<%=reader["S_profile"].ToString().Trim() %>" alt="" height="120" width="120">
                 </td>
                 <td class="text-left">
                     <b>Name :</b><br>

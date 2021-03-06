@@ -21,23 +21,17 @@ public partial class admin_AllStudents : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        p_path = MapPath("../public/student_profile/");
+        stdimage.Src = "../public/student_profile/photo.png";
+        con = Helper.getCon();
         if (Session["admin_id"] == null)
         {
             Response.Redirect("AdminLogin.aspx");
         }
-        else
-        {
-            con = Helper.getCon();
-            p_path = MapPath("student_profile\\");
-            if (Session["pro"] == null)
-            {
-                Session["pro"] = "photo.png";
-            }
-        }
 
         if (Request.QueryString["edit"] != null && !IsPostBack)
         {
-            Load_Edit_View();            
+            Load_Edit_View();
         }
         if (Request.QueryString["delete"] != null && !IsPostBack)
         {
@@ -111,6 +105,7 @@ public partial class admin_AllStudents : System.Web.UI.Page
         cmd = new SqlCommand("UPDATE student_Profile  SET S_Profile = '" + pro + "' WHERE S_Id = " + m(sid), con);
         cmd.ExecuteNonQuery();
         Helper.setSmsg("Registration Successfully.");
+        Response.Redirect("AllStudents.aspx");
 
     }
 
@@ -145,6 +140,7 @@ public partial class admin_AllStudents : System.Web.UI.Page
             student_stream.Text = m(dr["S_Stream"]);
             student_program.Text = m(dr["S_Program"]);
             student_program.Text = m(dr["S_GrNo"]);
+            stdimage.Src = "../public/student_profile/" + m(dr["S_Profile"]);
         }
     }
 
@@ -167,7 +163,7 @@ public partial class admin_AllStudents : System.Web.UI.Page
         String stream = student_stream.Text.ToString().Trim();
         String program = student_program.Text.ToString().Trim();
 
-        SqlCommand cmd = new SqlCommand("UPDATE student_Profile SET S_FullName = @fname,S_FatherFullName=@ffname,S_FatherOccupation=@foccupation,S_email = @email,S_mobile = @mobile,S_password = @password,S_DOB=@dob,S_City=@city,S_Pincode=@pincode,S_Address=@address,S_Gender=@gender,S_Category=@category,S_Stream = @stream, S_Program = @program WHERE S_Id ='" + Request.QueryString["edit"].ToString().Trim() + "'", Helper.getCon());
+        SqlCommand cmd = new SqlCommand("UPDATE student_Profile SET S_Nationality = @nationality, S_FullName = @fname,S_FatherFullName=@ffname,S_FatherOccupation=@foccupation,S_email = @email,S_mobile = @mobile,S_password = @password,S_DOB=@dob,S_City=@city,S_Pincode=@pincode,S_Address=@address,S_Gender=@gender,S_Category=@category,S_Stream = @stream, S_Program = @program WHERE S_Id ='" + Request.QueryString["edit"].ToString().Trim() + "'", Helper.getCon());
 
         cmd.Parameters.AddWithValue("@fname", Fname);
         cmd.Parameters.AddWithValue("@ffname", FFname);
@@ -184,6 +180,7 @@ public partial class admin_AllStudents : System.Web.UI.Page
         cmd.Parameters.AddWithValue("@nationality", nationality);
         cmd.Parameters.AddWithValue("@stream", stream);
         cmd.Parameters.AddWithValue("@program", program);
+        Response.Write(nationality);
         //if (f_pro.HasFile)
         //{
         //    String pro = "p_" + Session["S_Id"] + new FileInfo(f_pro.FileName).Extension;
@@ -195,8 +192,13 @@ public partial class admin_AllStudents : System.Web.UI.Page
         if (cmd.ExecuteNonQuery() == 1)
         {
             Session["S_Name"] = student_FullName.Text;
+            Response.Write("Hello chomu");
             Helper.setSmsg("Profile Update Successfully");
             Response.Redirect("AllStudents.aspx");
+
+        }
+        else
+        {
 
         }
 
