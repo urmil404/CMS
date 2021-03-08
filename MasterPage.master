@@ -12,56 +12,28 @@
 	<meta name="robots" content="" />
 	<asp:ContentPlaceHolder ID="head" runat="server">
 	</asp:ContentPlaceHolder>
-
-	<!-- DESCRIPTION -->
 	<meta name="description" content="EduChamp : Education HTML Template" />
-
-	<!-- OG -->
 	<meta property="og:title" content="EduChamp : Education HTML Template" />
 	<meta property="og:description" content="EduChamp : Education HTML Template" />
 	<meta property="og:image" content="" />
 	<meta name="format-detection" content="telephone=no">
-
-	<!-- FAVICONS ICON ============================================= -->
 	<link rel="icon" href="public/assets/images/favicon.ico" type="image/x-icon" />
 	<link rel="shortcut icon" type="image/x-icon" href="public/assets/images/favicon.png" />
-
-	<!-- PAGE TITLE HERE ============================================= -->
 	<title>EduChamp : Collage Foundation </title>
-
-	<!-- MOBILE SPECIFIC ============================================= -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<!--[if lt IE 9]>
-	<script src="public/assets/js/html5shiv.min.js"></script>
-	<script src="public/assets/js/respond.min.js"></script>
-	<![endif]-->
-
-	<!-- All PLUGINS CSS ============================================= -->
 	<link rel="stylesheet" type="text/css" href="public/assets/css/assets.css">
-
-	<!-- TYPOGRAPHY ============================================= -->
 	<link rel="stylesheet" type="text/css" href="public/assets/css/typography.css">
-
-	<!-- SHORTCODES ============================================= -->
 	<link rel="stylesheet" type="text/css" href="public/assets/css/shortcodes/shortcodes.css">
-
-	<!-- STYLESHEETS ============================================= -->
 	<link rel="stylesheet" type="text/css" href="public/assets/css/style.css">
 	<link class="skin" rel="stylesheet" type="text/css" href="public/assets/css/color/color-1.css">
-
-	<!-- REVOLUTION SLIDER CSS ============================================= -->
 	<link rel="stylesheet" type="text/css" href="public/assets/vendors/revolution/css/layers.css">
 	<link rel="stylesheet" type="text/css" href="public/assets/vendors/revolution/css/settings.css">
 	<link rel="stylesheet" type="text/css" href="public/assets/vendors/revolution/css/navigation.css">
-	<!-- REVOLUTION SLIDER END -->
 	<script src="public/assets/js/sweetalert.min.js"></script>
 </head>
 <body id="bg">
 	<div class="page-wraper">
 		<div id="loading-icon-bx"></div>
-		<!-- Header Top ==== -->
-		<!-- Header Top ==== -->
 		<header class="header rs-nav header-transparent">
 			<div class="top-bar">
 				<div class="container">
@@ -87,7 +59,7 @@
 									{
 								%>
 								<li><a href="login.aspx">Login</a></li>
-								<li><a href="signup.aspx">Register</a></li>
+								<li><a href="registration.aspx">Register</a></li>
 								<%
 									}
 								%>
@@ -231,13 +203,10 @@
 								<a href="javascript:;"><i class="fa fa-linkedin"></i></a>
 							</div>
 						</div>
-						<!-- Navigation Menu END ==== -->
 					</div>
 				</div>
 			</div>
 		</header>
-		<!-- Header Top END ==== -->
-		<!-- Header Top END ==== -->
 		<form id="form1" runat="server">
 			<div>
 				<asp:ContentPlaceHolder ID="mainContent" runat="server">
@@ -247,7 +216,6 @@
 
 		<asp:ContentPlaceHolder ID="footer" runat="server">
 		</asp:ContentPlaceHolder>
-		<!-- Footer ==== -->
 		<footer>
 			<div class="footer-top">
 				<div class="pt-exebar">

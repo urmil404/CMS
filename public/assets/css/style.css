@@ -3356,3 +3356,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#391800', end
 		margin-bottom: 5px;
 	}
 }
+
+
+/*Other Custome Styles*/
+.btn-container .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    visibility: hidden;
+}
+
+.btn-container:hover .btn {
+    visibility: visible;
+}

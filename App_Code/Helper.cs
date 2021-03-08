@@ -6,58 +6,29 @@ using System.Web;
 using System.Data;
 using System.Configuration;
 
-
-
 public static class Helper
 {
-	private static SqlConnection con;
 	public static String WEBSITE_NAME = "EduChamp";
 	public static String WEBSITE_FULL_NAME = "Online College Management System";
 	public static String WEBSITE_EMAIL = "admin@educamp.org";
-	public static String WEBSITE_PHONE = "6354634577";
-
-	public static SqlConnection getCon()
-	{
-		if (con == null)
-		{
-			con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
-			con.Open();
-		}
-		return con;
-	}
+	public static String WEBSITE_PHONE = "6354634577";    
     
-	public static int Scaller(String qry)
-	{
-		SqlCommand cmd = new SqlCommand(qry, getCon());
-		int res = (int)cmd.ExecuteScalar();
-		//HttpContext.Current.Response.Write("namo");
-		return res;
-	}
+    // Other Details
+    public static String WEBSITE_STUDENT_PATH = "public/students/";
 
-    public static SqlDataReader myInsert(string qry)
+    public static String get_Student_Image(String name = "")
     {
-        SqlCommand cmd = new SqlCommand(qry, getCon());
-        SqlDataReader reader = cmd.ExecuteReader();
-        return reader;
-    }
-    public static int MyNoQ(string qry)
-    {
-        SqlCommand cmd = new SqlCommand(qry, getCon());
-        return cmd.ExecuteNonQuery();
+        if(name.Equals(""))
+        {
+            name = "photo.png";
+        }
+        return Helper.WEBSITE_STUDENT_PATH + name;
     }
 
-    
 	public static String S(Object o)
 	{
 		return o.ToString().Trim();
 	}
-	public static void Namee()
-	{
-		HttpContext.Current.Response.Write("hello ji");
-	}
-
-
-	// for set dynamic messages
 
 	public static String[] getArrayWithAddedString(String[] eles, String newele)
 	{

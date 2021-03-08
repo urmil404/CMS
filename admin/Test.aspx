@@ -1,8 +1,0 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/admin.master" AutoEventWireup="true" CodeFile="Test.aspx.cs" Inherits="admin_Test" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="Content_Form" Runat="Server">
-    <h1>Testing Success.</h1>
-</asp:Content>
-

@@ -12,6 +12,6 @@ public partial class logout : System.Web.UI.Page
 		Session.Abandon();
 		Session.Clear();
 		Response.Cookies.Clear();
-		Response.Redirect("Login.aspx");
+		Response.Redirect("login.aspx");
     }
 }

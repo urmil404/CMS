@@ -60,7 +60,7 @@
 				<div class="account-container">
 					<div class="heading-bx left">
 						<h2 class="title-head">Login to your <span>Account</span></h2>
-						<p>Don't have an account? <a href="signup.aspx">SignUp here</a></p>
+						<p>Don't have an account? <a href="registration.aspx">Register here</a></p>
 					</div>
 					<form class="contact-bx" runat="server">
 						<div class="row placeani">

@@ -13,13 +13,16 @@ public partial class Client_login : System.Web.UI.Page
 	SqlConnection con;
 	protected void Page_Load(object sender, EventArgs e)
 	{
-		con = Helper.getCon();
+        con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
+        con.Open();
 	}
 	protected void client_btn_submit_Click(object sender, EventArgs e)
 	{
 		String uname = username.Text;
         String pass = password.Text;
-		SqlDataReader reader = Helper.myInsert("SELECT * FROM students WHERE student_email = '" + uname + "'");
+		
+        SqlCommand cmd = new SqlCommand("SELECT * FROM students WHERE student_email = '" + uname + "'",con);
+        SqlDataReader reader = cmd.ExecuteReader();
 		if (reader.Read())
 		{
 			String student_id = reader["student_id"].ToString().Trim();

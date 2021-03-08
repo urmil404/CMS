@@ -11,7 +11,7 @@ public partial class admin_Default : System.Web.UI.Page
     {
         if (Session["admin_id"] == null)
         {
-            Response.Redirect("AdminLogin.aspx");
+          //  Response.Redirect("AdminLogin.aspx");
         }
     }
 }
