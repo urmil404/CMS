@@ -113,13 +113,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <div class="col-xl-4 col-sm-6 mt-3">
-                                    <asp:Label runat="server" AssociatedControlID="txt_student_password">Password</asp:Label>
-                                    <asp:TextBox ID="txt_student_password" CssClass="form-control" runat="server"></asp:TextBox>
-                                </div>
-                            </div>
-                           
                             <div class="form-group row text-center">
                                 <div class="col-xl-4 col-sm-6 mt-3">
                                     <asp:Button CssClass="btn btn-success" Text="Register" ID="txt_Add_Student" runat="server" OnClick="reg_student" />

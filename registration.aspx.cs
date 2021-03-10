@@ -24,7 +24,7 @@ public partial class registration : System.Web.UI.Page
             img_Student.Src = Helper.get_Student_Image();
         }
     }
-    
+
     protected void reg_student(object sender, EventArgs e)
     {
         String name = txt_student_Name.Text.ToString();
@@ -36,6 +36,8 @@ public partial class registration : System.Web.UI.Page
         String address = txt_student_address.Text.ToString();
         String city = txt_student_city.Text.ToString();
         String pincode = txt_student_pincode.Text.ToString();
+        
+
 
         SqlCommand cmd = new SqlCommand("INSERT INTO students(s_name,s_fathername,s_dob,s_gender,s_mobile,s_email,s_address,s_city,s_pincode) output INSERTED.s_id values(@s_name,@s_fathername,@s_dob,@s_gender,@s_mobile,@s_email,@s_address,@s_city,@s_pincode)", con);
 
@@ -52,14 +54,17 @@ public partial class registration : System.Web.UI.Page
 
         if (Convert.ToBoolean(res))
         {
-
+            String nm = "";
+            String new_pass = Helper.Genrate_New_Password();
+            eMail.sendMail(email, "Your Credensial", "<h3>PAssword : " + new_pass + "</h3><h4>Thank Your My Dear</h4>");
             if (s_Image.HasFile)
             {
-                String nm = "s_" + Convert.ToString(res) + new FileInfo(s_Image.FileName).Extension;
+                nm = "s_" + Convert.ToString(res) + new FileInfo(s_Image.FileName).Extension;
                 s_Image.SaveAs(i_path + nm);
-                SqlCommand ncmd = new SqlCommand("UPDATE students SET s_image = '" + nm + "' WHERE s_id =" + res, con);
-                ncmd.ExecuteNonQuery();
             }
+
+            SqlCommand ncmd = new SqlCommand("UPDATE students SET s_image = '" + nm + "', s_password = '" + new_pass + "' WHERE s_id =" + res, con);
+            ncmd.ExecuteNonQuery();
             Helper.setSmsg("Your are Registered Successfully.");
             Response.Redirect("Default.aspx");
 
@@ -70,5 +75,5 @@ public partial class registration : System.Web.UI.Page
             Response.Redirect("login.aspx");
         }
     }
-    
+
 }
