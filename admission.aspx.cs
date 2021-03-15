@@ -94,7 +94,7 @@ public partial class admission : System.Web.UI.Page
         string sem_num = rr["ah_sem"].ToString().Trim();
         string fees = rr["ah_fees"].ToString().Trim();
 
-        cmd = new SqlCommand("INSERT INTO Admissions(ad_ah, ad_course,ad_sem,ad_student,ad_fees,ad_rollno,ad_payment,ad_date,ad_status ) output INSERTED.ad_id values(@ah,@course,@sem,@student,@fees, (SELECT (COUNT(*) +1 ) FROM Admissions WHERE ad_ah = 5), @payment, @date, 1)", con);
+        cmd = new SqlCommand("INSERT INTO Admissions(ad_ah, ad_course,ad_sem,ad_student,ad_fees,ad_rollno,ad_payment,ad_date,ad_status ) output INSERTED.ad_id values(@ah,@course,@sem,@student,@fees, (SELECT (COUNT(*) +1 ) FROM Admissions WHERE ad_ah = 5), @payment, @date, 'pending')", con);
         DateTime dateTime = DateTime.UtcNow.Date;
 
         cmd.Parameters.AddWithValue("@ah", ah_id);
@@ -102,7 +102,7 @@ public partial class admission : System.Web.UI.Page
         cmd.Parameters.AddWithValue("@sem", sem_num);
         cmd.Parameters.AddWithValue("@student", Session["student_id"]);
         cmd.Parameters.AddWithValue("@fees", fees);
-        cmd.Parameters.AddWithValue("@payment", "unpaid");
+        cmd.Parameters.AddWithValue("@payment", "Unpaid");
         cmd.Parameters.AddWithValue("@date", dateTime.ToString("yyyy-MM-dd"));
 
         int res = (int)cmd.ExecuteScalar();

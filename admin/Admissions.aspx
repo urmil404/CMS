@@ -69,12 +69,28 @@
                                         ControlToValidate="txt_date" Display="Dynamic">
                                     </asp:RequiredFieldValidator>
                 </div>
+                <div class="col-4 form-group">
+                    <asp:Label Text="Status" AssociatedControlID="ddl_status" runat="server"></asp:Label>
+                    <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_status">
+                        <asp:ListItem>--Select--</asp:ListItem>
+                        <asp:ListItem>Pending</asp:ListItem>
+                        <asp:ListItem>Process</asp:ListItem>
+                        <asp:ListItem>Approved</asp:ListItem>
+                        <asp:ListItem>Cancel</asp:ListItem>
+                        <asp:ListItem>Rejected</asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="ddl_status_rfv" runat="server"
+                                        ErrorMessage="* Please Select Status"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="ddl_status" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
+                </div>
             </div>
 
         </div>
         <div class="card-footer pb-2">
-            <asp:Button CssClass="btn btn-success" Text="Add Admission" ID="txt_Add_Student" runat="server" OnClick="add_admission" />
-            <asp:Button CssClass="btn btn-warning" Text="Update Admission" ID="txt_Upd_Student" runat="server" Visible="false" />
+            <asp:Button CssClass="btn btn-success" Text="Add Admission" ID="txt_Add_admission" runat="server" OnClick="add_admission" />
+            <asp:Button CssClass="btn btn-warning" Text="Update Admission" ID="txt_Upd_admission" runat="server" Visible="false" OnClick="upd_admissions" />
         </div>
     </div>
 </asp:Content>
@@ -88,11 +104,14 @@
             <table class="table table-bordered w-100" id="dataTable">
                 <thead>
                     <tr>
-                        <th>Student ID</th>
-                        <th>photo</th>
-                        <th>Student Details</th>
-                        <th>Contact</th>
-                        <th>Address</th>
+                        <th>Admission ID</th>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Sem</th>
+                        <th>Fees</th>
+                        <th>Date</th>
+                        <th>Payment</th>
+                        <th>Status</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -102,46 +121,39 @@
                                            
                         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
                         con.Open();
-                        SqlCommand cmd = new SqlCommand("SELECT * FROM students", con);
+                        SqlCommand cmd = new SqlCommand("SELECT * FROM students,Admissions,courses WHERE ad_course=c_id AND ad_student=s_id", con);
                         SqlDataReader reader = cmd.ExecuteReader();
                         while (reader.Read())
                         { %>
                     <tr>
                         <td>
-                            <%= reader["s_id"].ToString().Trim() %>
+                            <%= reader["ad_id"].ToString().Trim() %>
                         </td>
                         <td>
-                            <img height="100" src="../<%=Helper.get_Student_Image(reader["s_image"].ToString().Trim())%>" />
+                            <%= reader["s_name"].ToString().Trim() %>
                         </td>
                         <td>
-                            <b>Name :</b><br />
-                            <%= reader["s_name"].ToString().Trim() %><br />
-                            <b>Father Name :</b><br />
-                            <%= reader["s_fathername"].ToString().Trim() %><br />
-                            <b>DOB :</b><br />
-                            <%= reader["s_dob"].ToString().Trim() %><br />
-                            <b>Gender :</b><br />
-                            <%= reader["s_gender"].ToString().Trim() %>
+                            <%= reader["c_name"].ToString().Trim() %>
                         </td>
                         <td>
-                            <b>Mobile :</b><br />
-                            <%= reader["s_mobile"].ToString().Trim() %><br />
-                            <b>Email :</b><br />
-                            <%= reader["s_email"].ToString().Trim() %>
+                            <%= reader["ad_sem"].ToString().Trim() %>
                         </td>
                         <td>
-                            <b>Addresss :</b><br />
-                            <%= reader["s_address"].ToString().Trim() %><br />
-                            <b>City :</b><br />
-                            <%= reader["s_city"].ToString().Trim() %>
-                            <br />
-                            <b>Pincode :</b><br />
-                            <%= reader["s_pincode"].ToString().Trim() %>
+                            <%= reader["ad_fees"].ToString().Trim() %>
+                        </td>
+                        <td>
+                            <%= reader["ad_date"].ToString().Trim() %>
+                        </td>
+                        <td>
+                            <%= reader["ad_payment"].ToString().Trim() %>
+                        </td>
+                        <td>
+                            <%= reader["ad_status"].ToString().Trim() %>
                         </td>
                         <td>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <a class="myedit" href="students.aspx?edit=<%= reader["s_id"].ToString().Trim() %>"><i class="btn btn-primary">Edit</i></a>
+                                    <a class="myedit" href="admissions.aspx?edit=<%= reader["ad_id"].ToString().Trim() %>"><i class="btn btn-primary">Edit</i></a>
                                     </a>
                                 </div>
                             </div>
@@ -149,7 +161,7 @@
                         <td>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <a class="delete" href="students.aspx?delete=<%= reader["s_id"].ToString().Trim() %>"><i class="btn btn-danger">Delete</i></a>
+                                    <a class="delete" href="admissions.aspx?delete=<%= reader["ad_id"].ToString().Trim() %>"><i class="btn btn-danger">Delete</i></a>
                                 </div>
                             </div>
                         </td>
@@ -159,11 +171,14 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>Student ID</th>
-                        <th>photo</th>
-                        <th>Student Details</th>
-                        <th>Contact</th>
-                        <th>Address</th>
+                        <th>Admission ID</th>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Sem</th>
+                        <th>Fees</th>
+                        <th>Date</th>
+                        <th>Payment</th>
+                        <th>Status</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>

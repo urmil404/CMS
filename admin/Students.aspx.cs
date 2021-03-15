@@ -38,7 +38,7 @@ public partial class admin_Students : System.Web.UI.Page
         String name = txt_student_Name.Text.ToString();
         String fathername = txt_student_Fathername.Text.ToString();
         String dob = txt_student_Dob.Text.ToString();
-        String gender = ddl_student_gender.Text.ToString();
+        String gender = ddl_Gender.Text.ToString();
         String mobile = txt_student_Mobile.Text.ToString();
         String email = txt_student_email.Text.ToString();
         String address = txt_student_address.Text.ToString();
@@ -85,7 +85,7 @@ public partial class admin_Students : System.Web.UI.Page
         String name = txt_student_Name.Text.ToString();
         String fathername = txt_student_Fathername.Text.ToString();
         String dob = txt_student_Dob.Text.ToString();
-        String gender = ddl_student_gender.Text.ToString();
+        String gender = ddl_Gender.Text.ToString();
         String mobile = txt_student_Mobile.Text.ToString();
         String email = txt_student_email.Text.ToString();
         String address = txt_student_address.Text.ToString();

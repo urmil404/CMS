@@ -67,9 +67,13 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-book fa-2x"></i></div>
                             Admission Headers
                         </a>
-                        <a class="nav-link" href="admin-contact.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-phone fa-2x"></i></div>
-                            Contact Us
+                        <a class="nav-link" href="notice.aspx">
+                            <div class="sb-nav-link-icon"><i class="fas fa-address-card fa-2x"></i></div>
+                            Notice
+                        </a>
+                        <a class="nav-link" href="fine.aspx">
+                            <div class="sb-nav-link-icon"><i class="fas fa-wallet fa-2x"></i></div>
+                            Fine
                         </a>
                     </div>
                 </div>
