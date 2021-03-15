@@ -21,14 +21,29 @@
                 <div class="col-4 form-group">
                     <asp:Label Text="Admission Header" AssociatedControlID="ddl_ah" runat="server"></asp:Label>
                     <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_ah"></asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="ah_rfv" runat="server"
+                                        ErrorMessage="* Please Select Admission"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="ddl_ah" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
                 </div>
                 <div class="col-4 form-group">
                     <asp:Label Text="Student" AssociatedControlID="ddl_student" runat="server"></asp:Label>
                     <asp:DropDownList CssClass="form-control" runat="server" ID="ddl_student"></asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="student_rfv" runat="server"
+                                        ErrorMessage="* Please Select Admission"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="ddl_student" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
                 </div>
                 <div class="col-4 form-group">
                     <asp:Label Text="Fees" AssociatedControlID="txt_fees" runat="server"></asp:Label>
                     <asp:TextBox CssClass="form-control" runat="server" ID="txt_fees"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="fees_rfv" runat="server"
+                                        ErrorMessage="* Please Select Admission"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="txt_fees" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
                 </div>
             </div>
             <div class="row">
@@ -39,10 +54,20 @@
                         <asp:ListItem>Paid</asp:ListItem>
                         <asp:ListItem>Unpaid</asp:ListItem>
                     </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="payment_rfv" runat="server"
+                                        ErrorMessage="* Please Select Admission"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="ddl_payment" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
                 </div>
                  <div class="col-4 form-group">
                     <asp:Label Text="Date" AssociatedControlID="txt_date" runat="server"></asp:Label>
                     <asp:TextBox runat="server" TextMode="Date" CssClass="form-control" ID="txt_date"></asp:TextBox>
+                      <asp:RequiredFieldValidator ID="date_rfv" runat="server"
+                                        ErrorMessage="* Please Select Admission"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="txt_date" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
                 </div>
             </div>
 

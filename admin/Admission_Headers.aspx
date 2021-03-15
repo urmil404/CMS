@@ -22,16 +22,32 @@
                     <asp:Label runat="server" AssociatedControlID="ddl_course">Course Name</asp:Label>
                     <asp:DropDownList CssClass="form-control" ID="ddl_course" runat="server">
                     </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="course_rfv" runat="server"
+                                        ErrorMessage="* Please Select Course"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="ddl_course" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
                 </div>
                 <div class="form-group col-4">
                     <asp:Label runat="server" AssociatedControlID="txt_ah_sem">Semester</asp:Label>
                     <asp:TextBox ID="txt_ah_sem" CssClass="form-control" runat="server">              
                     </asp:TextBox>
+                     <asp:RequiredFieldValidator ID="sem_rfv" runat="server"
+                                        ErrorMessage="* Please Select Semester"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="txt_ah_sem" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
+
                 </div>
                 <div class="form-group col-4">
                     <asp:Label runat="server" AssociatedControlID="txt_ah_fees">Fees</asp:Label>
                     <asp:TextBox ID="txt_ah_fees" CssClass="form-control" runat="server">              
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator ID="fees_rfv" runat="server"
+                                        ErrorMessage="* Please Select Fees"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="txt_ah_fees" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
                 </div>
             </div>
             <div class="row">
@@ -39,21 +55,41 @@
                     <asp:Label runat="server" AssociatedControlID="txt_ah_startdate">Start Date</asp:Label>
                     <asp:TextBox ID="txt_ah_startdate" TextMode="Date" CssClass="form-control" runat="server">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator ID="startdate_rfv" runat="server"
+                                        ErrorMessage="* Please Select Date"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="txt_ah_startdate" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
                 </div>
                 <div class="form-group col-3">
                     <asp:Label runat="server" AssociatedControlID="txt_ah_enddate">End Date</asp:Label>
                     <asp:TextBox ID="txt_ah_enddate" TextMode="Date" CssClass="form-control" runat="server">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator ID="enddate_rfv" runat="server"
+                                        ErrorMessage="* Please Select Date"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="txt_ah_enddate" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
                 </div>
                 <div class="form-group col-3">
                     <asp:Label runat="server" AssociatedControlID="txt_ah_starttermdate">Start Term Date</asp:Label>
                     <asp:TextBox ID="txt_ah_starttermdate" TextMode="Date" CssClass="form-control" runat="server">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator ID="start_term_rfv" runat="server"
+                                        ErrorMessage="* Please Select Date"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="txt_ah_starttermdate" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
                 </div>
                 <div class="form-group col-3">
                     <asp:Label runat="server" AssociatedControlID="txt_ah_endtermdate">End Term Date</asp:Label>
                     <asp:TextBox ID="txt_ah_endtermdate" TextMode="Date" CssClass="form-control" runat="server">
                     </asp:TextBox>
+                    <asp:RequiredFieldValidator ID="end_term_rfv" runat="server"
+                                        ErrorMessage="* Please Select Date"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="txt_ah_endtermdate" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
                 </div>
             </div>
         </div>
@@ -101,6 +137,7 @@
                             <th>Adminssion ID</th>
                             <th>Adminssion Name</th>
                             <th>Adminssion Sem</th>
+                            <th>Fees</th>
                             <th>Start Date</th>
                             <th>End Date</th>
                             <th>Start Term Date</th>
@@ -113,7 +150,7 @@
                         <% 
                             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
                             con.Open();
-                            SqlCommand cmd = new SqlCommand("SELECT ah_id, ah_course, ah_sem, CONVERT(varchar, ah_startdate, 106) AS ah_startdate,  CONVERT(varchar, ah_enddate, 106) AS ah_enddate,  CONVERT(varchar, ah_start_termdate, 106) AS ah_start_termdate,  CONVERT(varchar, ah_end_termdate, 106) AS ah_end_termdate, c_name FROM Admission_Headers,courses WHERE ah_course=c_id", con);
+                            SqlCommand cmd = new SqlCommand("SELECT ah_id, ah_course, ah_sem,ah_fees,CONVERT (varchar, ah_startdate, 106) AS ah_startdate,  CONVERT(varchar, ah_enddate, 106) AS ah_enddate,  CONVERT(varchar, ah_start_termdate, 106) AS ah_start_termdate,  CONVERT(varchar, ah_end_termdate, 106) AS ah_end_termdate, c_name FROM Admission_Headers,courses WHERE ah_course=c_id", con);
                             SqlDataReader reader = cmd.ExecuteReader();
                             while (reader.Read())
                             { 
@@ -127,6 +164,9 @@
                             </td>
                             <td>
                                 <%= reader["ah_sem"].ToString().Trim() %>
+                            </td>
+                            <td>
+                                <%= reader["ah_fees"].ToString().Trim() %>
                             </td>
                             <td>
                                 <%= reader["ah_startdate"].ToString().Trim() %>
@@ -163,6 +203,7 @@
                             <th>Adminssion ID</th>
                             <th>Adminssion Name</th>
                             <th>Adminssion Sem</th>
+                            <th>Fees</th>
                             <th>Start Date</th>
                             <th>End Date</th>
                             <th>Start Term Date</th>

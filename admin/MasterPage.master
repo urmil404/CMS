@@ -22,7 +22,7 @@
 <body class="sb-nav-fixed">
 
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="Default.aspx">CMS Dashboard</a>
+        <a class="navbar-brand" href="Default.aspx">Educamp</a>
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
         <!-- Navbar-->
         <ul class="navbar-nav ml-auto ml-md-0">
@@ -48,19 +48,23 @@
                             Dashboard
                         </a>
                         <a class="nav-link" href="students.aspx">
-                            <div class="sb-nav-link-icon"><i class="fas fa-question-circle fa-2x"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-user-graduate fa-2x"></i></div>
                             Students
                         </a>
                         <a class="nav-link" href="faculty.aspx">
-                            <div class="sb-nav-link-icon"><i class="fas fa-archive fa-2x"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-chalkboard-teacher fa-2x"></i></div>
                             Faculties
                         </a>
                         <a class="nav-link" href="courses.aspx">
-                            <div class="sb-nav-link-icon"><i class="fas fa-lightbulb fa-2x"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-brain fa-2x"></i></div>
                             Courses
                         </a>
+                        <a class="nav-link" href="admissions.aspx">
+                            <div class="sb-nav-link-icon"><i class="fas fa-ad fa-2x"></i></div>
+                            Admissions
+                        </a>
                         <a class="nav-link" href="Admission_Headers.aspx">
-                            <div class="sb-nav-link-icon"><i class="fas fa-plus fa-2x"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-book fa-2x"></i></div>
                             Admission Headers
                         </a>
                         <a class="nav-link" href="admin-contact.php">

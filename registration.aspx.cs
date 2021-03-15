@@ -37,8 +37,6 @@ public partial class registration : System.Web.UI.Page
         String city = txt_student_city.Text.ToString();
         String pincode = txt_student_pincode.Text.ToString();
         
-
-
         SqlCommand cmd = new SqlCommand("INSERT INTO students(s_name,s_fathername,s_dob,s_gender,s_mobile,s_email,s_address,s_city,s_pincode) output INSERTED.s_id values(@s_name,@s_fathername,@s_dob,@s_gender,@s_mobile,@s_email,@s_address,@s_city,@s_pincode)", con);
 
         cmd.Parameters.AddWithValue("@s_name", name);
@@ -65,8 +63,9 @@ public partial class registration : System.Web.UI.Page
 
             SqlCommand ncmd = new SqlCommand("UPDATE students SET s_image = '" + nm + "', s_password = '" + new_pass + "' WHERE s_id =" + res, con);
             ncmd.ExecuteNonQuery();
+            Session["student_id"] = res;
             Helper.setSmsg("Your are Registered Successfully.");
-            Response.Redirect("Default.aspx");
+            Response.Redirect("Admission.aspx");
 
         }
         else

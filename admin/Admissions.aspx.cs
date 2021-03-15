@@ -41,11 +41,9 @@ public partial class admin_Admissions : System.Web.UI.Page
         ddl_ah.Items.Insert(0, new ListItem("--Select--", ""));
 
         da = new SqlDataAdapter("SELECT * FROM students", con);
-
         ds.Clear();
 
         da.Fill(ds);
-
         ddl_student.DataSource = ds;
         ddl_student.DataValueField = "s_id";
         ddl_student.DataTextField = "s_name";
@@ -89,9 +87,18 @@ public partial class admin_Admissions : System.Web.UI.Page
         String payment = ddl_payment.Text.ToString();
         String date = txt_date.Text.ToString();
 
-        cmd = new SqlCommand("INSERT INTO Admissions(ad_ah,ad_student,ad_fees,ad_rollno,ad_payment,ad_date,ad_status ) output INSERTED.ad_id values(@ah,@student,@fees, (SELECT (COUNT(*) +1 ) FROM Admissions WHERE ad_ah = 5), @payment, @date, 1)", con);
+        String admission_header_id = ddl_ah.SelectedValue.ToString();
+        cmd = new SqlCommand("SELECT * FROM Admission_Headers WHERE ah_id=" + admission_header_id, con);
+        SqlDataReader rr = cmd.ExecuteReader();
+        rr.Read();
+        string course_id = rr["ah_course"].ToString().Trim();
+        string sem_num = rr["ah_sem"].ToString().Trim();
+
+        cmd = new SqlCommand("INSERT INTO Admissions(ad_ah, ad_course,ad_sem,ad_student,ad_fees,ad_rollno,ad_payment,ad_date,ad_status ) output INSERTED.ad_id values(@ah,@course,@sem,@student,@fees, (SELECT (COUNT(*) +1 ) FROM Admissions WHERE ad_ah = 5), @payment, @date, 1)", con);
 
         cmd.Parameters.AddWithValue("@ah", ddl_ah.SelectedValue.ToString());
+        cmd.Parameters.AddWithValue("@course", course_id);
+        cmd.Parameters.AddWithValue("@sem", sem_num);
         cmd.Parameters.AddWithValue("@student", ddl_student.SelectedValue.ToString());
         cmd.Parameters.AddWithValue("@fees", txt_fees.Text.ToString());
         cmd.Parameters.AddWithValue("@payment", ddl_payment.SelectedValue.ToString());

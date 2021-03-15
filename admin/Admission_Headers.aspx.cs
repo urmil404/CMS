@@ -55,7 +55,7 @@ public partial class admin_Admission_Headers : System.Web.UI.Page
     {
         txt_Add_admission.Visible = false;
         txt_Upd_admission.Visible = true;
-        SqlCommand cmd = new SqlCommand("SELECT ah_id, ah_course, ah_sem, CONVERT(varchar, ah_startdate) AS ah_startdate,  CONVERT(varchar, ah_enddate) AS ah_enddate,  CONVERT(varchar, ah_start_termdate) AS ah_start_termdate,  CONVERT(varchar, ah_end_termdate) AS ah_end_termdate FROM Admission_Headers WHERE ah_id = " + Request.QueryString["edit"], con);
+        SqlCommand cmd = new SqlCommand("SELECT ah_id, ah_course, ah_sem,ah_fees, CONVERT(varchar, ah_startdate) AS ah_startdate,  CONVERT(varchar, ah_enddate) AS ah_enddate,  CONVERT(varchar, ah_start_termdate) AS ah_start_termdate,  CONVERT(varchar, ah_end_termdate) AS ah_end_termdate FROM Admission_Headers WHERE ah_id = " + Request.QueryString["edit"], con);
         SqlDataReader reader = cmd.ExecuteReader();
         if (reader.Read())
         {
