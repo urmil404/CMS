@@ -1,20 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/MasterPage.master" AutoEventWireup="true" CodeFile="Students.aspx.cs" Inherits="admin_Students" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/MasterPage.master" AutoEventWireup="true" CodeFile="faculty.aspx.cs" Inherits="admin_faculty" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="Content_BForm" runat="Server">
-    <div class="my-3">
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="Default.aspx">Dashboard</a></li>
-            <li class="breadcrumb-item">Students</li>
-        </ol>
-    </div>
+<asp:Content ID="Content2" ContentPlaceHolderID="Content_BForm" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="Content_Form" runat="Server">
+<asp:Content ID="Content3" ContentPlaceHolderID="Content_Form" Runat="Server">
     <div class="card my-4">
         <div class="card-header bg-dark text-white">
             <i class="fas fa-table mr-1"></i>
-            Add Student
+            Add Faculty
         </div>
         <div class="card-body">
             <div class="row">
@@ -37,52 +31,87 @@
                 <div class="col-9">
                     <div class="row">
                         <div class="form-group col-4">
-                            <asp:Label runat="server" AssociatedControlID="txt_student_Name">Student Name</asp:Label>
-                            <asp:TextBox ID="txt_student_Name" CssClass="form-control" placeholder="Firstname Middlename Lastname" runat="server"></asp:TextBox>
+                            <asp:Label runat="server" AssociatedControlID="txt_Faculty_Name">Faculty Name</asp:Label>
+                            <asp:TextBox ID="txt_Faculty_Name" CssClass="form-control" placeholder="Firstname Middlename Lastname" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="student_rfv" runat="server"
+                                        ErrorMessage="* Please Select Name"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="txt_Faculty_Name" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group col-4">
-                            <asp:Label runat="server" AssociatedControlID="txt_student_Fathername">Father Name</asp:Label>
-                            <asp:TextBox ID="txt_student_Fathername" CssClass="form-control" placeholder="Firstname Middlename Lastname" runat="server">              
+                            <asp:Label runat="server" AssociatedControlID="txt_Faculty_Dob">DOB</asp:Label>
+                            <asp:TextBox ID="txt_Faculty_Dob" TextMode="Date" CssClass="form-control" runat="server">              
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="txt_Faculty_Dob_rfv" runat="server"
+                                        ErrorMessage="* Please Select DOB"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="txt_Faculty_Dob" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group col-4">
-                            <asp:Label runat="server" AssociatedControlID="txt_student_Dob">DOB</asp:Label>
-                            <asp:TextBox ID="txt_student_Dob" TextMode="Date" CssClass="form-control" runat="server">       
-                            </asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-4">
-                            <asp:Label runat="server" AssociatedControlID="ddl_Gender" ID="ddl_student_gender">Gender</asp:Label>
+                            <asp:Label runat="server" AssociatedControlID="ddl_Gender" ID="ddl_Faculty_gender">Gender</asp:Label>
                             <asp:DropDownList ID="ddl_Gender" CssClass="form-control" runat="server">
                                 <asp:ListItem Value="">Gender</asp:ListItem>
                                 <asp:ListItem>Male</asp:ListItem>
                                 <asp:ListItem>Female</asp:ListItem>
                                 <asp:ListItem>Other</asp:ListItem>
                             </asp:DropDownList>
-                        </div>
-                        <div class="form-group col-4">
-                            <asp:Label runat="server" AssociatedControlID="txt_student_Mobile">Mobile</asp:Label>
-                            <asp:TextBox ID="txt_student_Mobile" CssClass="form-control" runat="server">     
-                            </asp:TextBox>
-                        </div>
-                        <div class="form-group col-4">
-                            <asp:Label runat="server" AssociatedControlID="txt_student_email">Email</asp:Label>
-                            <asp:TextBox ID="txt_student_email" CssClass="form-control" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="ddl_Gender_rfv" runat="server"
+                                        ErrorMessage="* Please Select Gender"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="ddl_Gender" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-4">
-                            <asp:Label runat="server" AssociatedControlID="txt_student_address">Address</asp:Label>
-                            <asp:TextBox ID="txt_student_address" CssClass="form-control" TextMode="multiline" Columns="30" Rows="2" runat="server" />
+                            <asp:Label runat="server" AssociatedControlID="txt_Faculty_Mobile">Mobile</asp:Label>
+                            <asp:TextBox ID="txt_Faculty_Mobile" CssClass="form-control" runat="server">     
+                            </asp:TextBox>
+                             <asp:RequiredFieldValidator ID="txt_Faculty_Mobile_rfv" runat="server"
+                                        ErrorMessage="* Please Select Mobile"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="txt_Faculty_Mobile" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group col-4">
-                            <asp:Label runat="server" AssociatedControlID="txt_student_city">City</asp:Label>
-                            <asp:TextBox ID="txt_student_city" CssClass="form-control" runat="server">      </asp:TextBox>
+                            <asp:Label runat="server" AssociatedControlID="txt_Faculty_email">Email</asp:Label>
+                            <asp:TextBox ID="txt_Faculty_email" CssClass="form-control" runat="server"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="txt_Faculty_email_rfv" runat="server"
+                                        ErrorMessage="* Please Select Email"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="txt_Faculty_email" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
                         </div>
                         <div class="form-group col-4">
-                            <asp:Label runat="server" AssociatedControlID="txt_student_pincode">Pincode</asp:Label>
-                            <asp:TextBox ID="txt_student_pincode" CssClass="form-control" runat="server">      </asp:TextBox>
+                            <asp:Label runat="server" AssociatedControlID="txt_Faculty_address">Address</asp:Label>
+                            <asp:TextBox ID="txt_Faculty_address" CssClass="form-control" TextMode="multiline" Columns="30" Rows="2" runat="server" />
+                             <asp:RequiredFieldValidator ID="txt_Faculty_address_rfv" runat="server"
+                                        ErrorMessage="* Please Select Address"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="txt_Faculty_address" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
+                        </div>
+                    </div>
+                    <div class="row">                        
+                        <div class="form-group col-4">
+                            <asp:Label runat="server" AssociatedControlID="txt_Faculty_city">City</asp:Label>
+                            <asp:TextBox ID="txt_Faculty_city" CssClass="form-control" runat="server">      </asp:TextBox>
+                             <asp:RequiredFieldValidator ID="txt_Faculty_city_rfv" runat="server"
+                                        ErrorMessage="* Please Select City"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="txt_Faculty_city" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
+                        </div>
+                        <div class="form-group col-4">
+                            <asp:Label runat="server" AssociatedControlID="txt_Faculty_pincode">Pincode</asp:Label>
+                            <asp:TextBox ID="txt_Faculty_pincode" CssClass="form-control" runat="server">      </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="txt_Faculty_pincode_rfv" runat="server"
+                                        ErrorMessage="* Please Select Pincode"
+                                        CssClass="text-valid text-danger pl-2"
+                                        ControlToValidate="txt_Faculty_pincode" Display="Dynamic">
+                                    </asp:RequiredFieldValidator>
                         </div>
                     </div>
                 </div>
@@ -90,12 +119,12 @@
 
         </div>
         <div class="card-footer pb-2">
-            <asp:Button CssClass="btn btn-success" Text="Add Student" ID="txt_Add_Student" runat="server" OnClick="add_student" />
-            <asp:Button CssClass="btn btn-warning" Text="Update Student" ID="txt_Upd_Student" runat="server" OnClick="upd_student" Visible="false" />
+            <asp:Button CssClass="btn btn-success" Text="Add Faculty" ID="txt_Add_Faculty" runat="server" OnClick="add_faculty" />
+            <asp:Button CssClass="btn btn-warning" Text="Update Faculty" ID="txt_Upd_Faculty" runat="server" OnClick="upd_faculty" Visible="false" />
         </div>
     </div>
 </asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="Content_AForm" runat="Server">
+<asp:Content ID="Content4" ContentPlaceHolderID="Content_AForm" Runat="Server">
     <div class="card mb-4" runat="server" id="area_student_list">
         <div class="card-header bg-dark text-white">
             <i class="fas fa-table mr-1"></i>
@@ -105,9 +134,9 @@
             <table class="table table-bordered w-100" id="dataTable">
                 <thead>
                     <tr>
-                        <th>Student ID</th>
+                       <th>Faculty ID</th>
                         <th>photo</th>
-                        <th>Student Details</th>
+                        <th>Faculty Details</th>
                         <th>Contact</th>
                         <th>Address</th>
                         <th>Edit</th>
@@ -176,9 +205,9 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                       <th>Student ID</th>
+                       <th>Faculty ID</th>
                         <th>photo</th>
-                        <th>Student Details</th>
+                        <th>Faculty Details</th>
                         <th>Contact</th>
                         <th>Address</th>
                         <th>Edit</th>
@@ -190,5 +219,7 @@
             </table>
         </div>
     </div>
+</asp:Content>
+<asp:Content ID="Content5" ContentPlaceHolderID="Script_Area" Runat="Server">
 </asp:Content>
 
