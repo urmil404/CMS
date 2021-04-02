@@ -121,7 +121,7 @@
                                            
                         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
                         con.Open();
-                        SqlCommand cmd = new SqlCommand("SELECT * FROM students,Admissions,courses WHERE ad_course=c_id AND ad_student=s_id", con);
+                        SqlCommand cmd = new SqlCommand("SELECT students.*,Admissions.*,courses.*,CONVERT(VARCHAR,ad_date, 105) as addate FROM students,Admissions,courses WHERE ad_course=c_id AND ad_student=s_id ", con);
                         SqlDataReader reader = cmd.ExecuteReader();
                         while (reader.Read())
                         { %>
@@ -142,7 +142,7 @@
                             <%= reader["ad_fees"].ToString().Trim() %>
                         </td>
                         <td>
-                            <%= reader["ad_date"].ToString().Trim() %>
+                            <%= reader["addate"].ToString().Trim() %>
                         </td>
                         <td>
                             <%= reader["ad_payment"].ToString().Trim() %>
@@ -191,6 +191,12 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="Script_Area" runat="Server">
     <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                "order": [[0, "desc"]]
+
+            });
+        });
         $(document).ready(function () {
             $("#<%= ddl_ah.ClientID %>").change(function () {
                 var ahid = $(this).val();

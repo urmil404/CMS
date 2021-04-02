@@ -110,11 +110,17 @@
                       $.ajax({
                           url: "Admission_Headers.aspx",
                           method: "GET",
+                          dataType: 'JSON',
                           data: {
                               cid: cid
                           },
                           success: function (res) {
-                              $("#<%= txt_ah_fees.ClientID %>").val(res);
+                              if (res.status) {
+                                  $("#<%= txt_ah_fees.ClientID %>").val(res.fee);
+                                  $("#<%= txt_ah_sem.ClientID %>").attr("max",res.sem);
+                              } else {
+                                  alert("Invalid ID");
+                              }
                           },
                       });
                   }
@@ -122,7 +128,20 @@
           });
     </script>
 </asp:Content>
+<%-- 
+    E to ani range bar chhe
+Means
 
+00-00-0000
+
+Nai thay
+Allow null kari null aapi dyo
+And aa date joti mate aavu karajo
+
+
+
+SELECT publisher.*, COALESCE(CONVERT(VARCHAR,updatedate, 105), '00-00-0000') AS updatedate1 FROM publisher
+     --%>
 <asp:Content ID="Content4" ContentPlaceHolderID="Content_AForm" runat="Server">
     <div class="card mb-4" runat="server" id="area_user_list">
         <div class="card-header bg-dark text-white">

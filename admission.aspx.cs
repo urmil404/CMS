@@ -18,6 +18,7 @@ public partial class admission : System.Web.UI.Page
         {
             Response.Redirect("login.aspx");
         }
+
         con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
         con.Open();
 

@@ -5,14 +5,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class admin_notice : System.Web.UI.Page
+public partial class myadmissions : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
-    }
-    protected void add_notice(object sender, EventArgs e)
-    {
-            
+        if (Session["student_id"] == null)
+        {
+            Response.Write("Helo");
+            //  Response.Redirect("AdminLogin.aspx");
+        }
     }
 }

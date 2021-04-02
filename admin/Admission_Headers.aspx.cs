@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Collections.Generic;
+using System.Web.Script.Serialization;
 
 public partial class admin_Admission_Headers : System.Web.UI.Page
 {
@@ -18,8 +20,27 @@ public partial class admin_Admission_Headers : System.Web.UI.Page
 
         if (Request.QueryString["cid"] != null)
         {
-            SqlCommand cmd = new SqlCommand("SELECT c_fees FROM courses WHERE c_id = " + Request.QueryString["cid"], con);
-            Response.Write(cmd.ExecuteScalar().ToString());
+            SqlCommand cmd = new SqlCommand("SELECT c_fees, c_maxsem FROM courses WHERE c_id = " + Request.QueryString["cid"], con);
+            SqlDataReader dr = cmd.ExecuteReader();
+            
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            if (dr.HasRows)
+            {
+                dr.Read();
+                Response.Write(js.Serialize(new
+                {
+                    status = true,
+                    fee = dr["c_fees"].ToString().Trim(),
+                    sem = dr["c_maxsem"].ToString().Trim()
+                }));
+            }
+            else
+            {
+                Response.Write(js.Serialize(new
+                {
+                    status = false
+                }));
+            }
             Response.End();
         }
 
