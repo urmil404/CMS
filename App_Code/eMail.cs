@@ -8,7 +8,7 @@ using System.Text;
 
 public static class eMail
 {
-    public static String username = "urmilrupareliya14@gmail.com";
+    public static String username = "educampcms@gmail.com";
     public static String password = IMP.email_password; // Chonage This Variable With Your Email Password
     public static String from = "EduCamp <urmil@gmail.com>";
     public static String smtpServer = "smtp.gmail.com";
@@ -25,9 +25,8 @@ public static class eMail
         System.Net.NetworkCredential basicCredential1 = new
         System.Net.NetworkCredential(eMail.username, eMail.password);
         client.EnableSsl = true;
-        client.UseDefaultCredentials = false;
+        client.UseDefaultCredentials = true;
         client.Credentials = basicCredential1;
-        
         try
         {
             client.Send(message);

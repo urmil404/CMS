@@ -18,44 +18,62 @@ public partial class Client_login : System.Web.UI.Page
     }
     protected void client_btn_submit_Click(object sender, EventArgs e)
     {
-        String uname = username.Text;
-        String pass = password.Text;
-
-        SqlCommand cmd = new SqlCommand("SELECT * FROM students WHERE s_email = '" + uname + "'", con);
-        SqlDataReader reader = cmd.ExecuteReader();
-        if (reader.Read())
+       
+        if (student_gender.Text.ToString().Trim() == "Students")
         {
-            String student_id = reader["s_id"].ToString().Trim();
-            String student_username = reader["s_email"].ToString().Trim();
-            String student_password = reader["s_password"].ToString().Trim();
-            //Int32 s_course = ;
-
-            if (student_password == pass)
+            String uname = username.Text;
+            String pass = password.Text;
+            SqlCommand cmd = new SqlCommand("SELECT * FROM students WHERE s_email = '" + uname + "'", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
             {
-                Helper.setSmsg("Login Successfull");
-                Session["student_id"] = student_id;
-                Session["student_username"] = uname;
-                if ((int)reader["s_course"] == 0)
+                String student_id = reader["s_id"].ToString().Trim();
+                String student_username = reader["s_email"].ToString().Trim();
+                String student_password = reader["s_password"].ToString().Trim();
+                //Int32 s_course = ;
+
+                if (student_password == pass)
+                //if(String.Compare(student_password,pass) == 0)
                 {
-                    Helper.setSmsg("Let's Take admission");
-                    Response.Redirect("admission.aspx");
+                    Helper.setSmsg("Login Successfull");
+                    Session["student_id"] = student_id;
+                    Session["student_username"] = uname;
+                    if ((int)reader["s_course"] == 0)
+                    {
+                        Helper.setSmsg("Let's Take admission");
+                        Response.Redirect("admission.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("Default.aspx");
+                    }
                 }
                 else
                 {
-                    Response.Redirect("Default.aspx");
+                    Helper.setAmsg("Invalid Password");
+                    Response.Redirect("login.aspx");
                 }
             }
             else
             {
-                Helper.setAmsg("Invalid Password");
+                Helper.setAmsg("You Are Not Registred...");
                 Response.Redirect("login.aspx");
             }
+            Response.End();
+        }
+        else  if (student_gender.Text.ToString().Trim() == "Faculty")
+        {
+            Response.Write("faculty section");
+        }
+        else if (student_gender.Text.ToString().Trim() == "Employees")
+        {
+            Response.Write("Employee section");
         }
         else
         {
-            Helper.setAmsg("You Are Not Registred...");
-            Response.Redirect("login.aspx");
+            Response.Write("Other peoples can see this section");
         }
-        Response.End();
+
+
     }
 }

@@ -14,9 +14,14 @@ public partial class admin_Admissions : System.Web.UI.Page
     SqlConnection con;
     protected void Page_Load(object sender, EventArgs e)
     {
+
         con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
         con.Open();
 
+        if (Session["admin_id"] == null)
+        {
+            Response.Redirect("admin_login.aspx");
+        }
         if (Request.QueryString["ahid"] != null)
         {
             SqlCommand cmd = new SqlCommand("SELECT ah_fees FROM Admission_Headers WHERE ah_id = " + Request.QueryString["ahid"], con);

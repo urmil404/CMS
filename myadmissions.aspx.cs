@@ -11,8 +11,11 @@ public partial class myadmissions : System.Web.UI.Page
     {
         if (Session["student_id"] == null)
         {
-            Response.Write("Helo");
-            //  Response.Redirect("AdminLogin.aspx");
+              Response.Redirect("login.aspx");
         }
+    }
+    protected void take_admission(object sender, EventArgs e)
+    {
+        Response.Redirect("admission.aspx");
     }
 }
