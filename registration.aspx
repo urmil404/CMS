@@ -39,13 +39,13 @@
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-12">
-                            <div class="heading-bx left my-3">
+                            <div class="heading-bx left ml-5 my-5">
                                 <h2 class="title-head">Register to your <span>Account</span></h2>
                                 <p>Already have an account? <a href="login.aspx">Login here</a></p>
                             </div>
 
                         </div>
-                        <div class="col-3">
+                        <div class="col-3 my-4">
                             <div class="btn-container" style="position: relative;">
                                 <img runat="server" id="img_Student" class="w-100" style="border-radius: 50%" />
                                 <button class="btn btn-success btn-sm" onclick="document.getElementById('<%= s_Image.ClientID %>').click()" type="button">Change</button>
@@ -114,7 +114,7 @@
                             </div>
 
                             <div class="form-group row text-center">
-                                <div class="col-xl-4 col-sm-6 mt-3">
+                                <div class="col-xl-12 col-sm-12 mt-3">
                                     <asp:Button CssClass="btn btn-success" Text="Register" ID="txt_Add_Student" runat="server" OnClick="reg_student" />
                                 </div>
                             </div>

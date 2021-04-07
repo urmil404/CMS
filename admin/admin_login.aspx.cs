@@ -13,15 +13,17 @@ public partial class admin_admin_login : System.Web.UI.Page
     SqlConnection con;
     protected void Page_Load(object sender, EventArgs e)
     {
+        con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
+        con.Open();
     }
     protected void btnAdminLogin(object sender, EventArgs e)
     {
-        con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
-        con.Open();
+        //con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
+        //con.Open();
 
         String uname = username.Text;
         String pass = password.Text;
-        SqlCommand cmd = new SqlCommand("SELECT * FROM admin WHERE admin_username = '" + uname + "'");
+        SqlCommand cmd = new SqlCommand("SELECT * FROM admin WHERE admin_username = '" + uname + "'",con);
         SqlDataReader reader = cmd.ExecuteReader();
         if (reader.Read())
         {
@@ -33,7 +35,7 @@ public partial class admin_admin_login : System.Web.UI.Page
                 Helper.setSmsg("Login Successfull");
                 Session["admin_id"] = admin_id;
                 Session["admin_username"] = uname;
-                Response.Redirect("AllStudents.aspx");
+                Response.Redirect("Default.aspx");
             }
             else
             {

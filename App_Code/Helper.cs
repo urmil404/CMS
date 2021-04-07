@@ -16,6 +16,16 @@ public static class Helper
 
     // Other Details
     public static String WEBSITE_STUDENT_PATH = "public/students/";
+    public static String WEBSITE_FACULTY_PATH = "public/facultly/";
+
+    public static String get_Faculty_Image(String name = "")
+    {
+        if (name.Equals(""))
+        {
+            name = "photo.png";
+        }
+        return Helper.WEBSITE_FACULTY_PATH + name;
+    }
 
     public static String get_Student_Image(String name = "")
     {

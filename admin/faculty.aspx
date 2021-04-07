@@ -14,16 +14,16 @@
             <div class="row">
                 <div class="col-3">
                     <div class="btn-container" style="position: relative;">
-                        <img runat="server" id="img_Student" class="w-100" style="border-radius: 50%" />
-                        <button class="btn btn-success btn-sm" onclick="document.getElementById('<%= s_Image.ClientID %>').click()" type="button">Change</button>
-                        <asp:FileUpload ID="s_Image" runat="server" CssClass="d-none" />
+                        <img runat="server" id="img_Faculty" class="w-100" style="border-radius: 50%" />
+                        <button class="btn btn-success btn-sm" onclick="document.getElementById('<%= f_Image.ClientID %>').click()" type="button">Change</button>
+                        <asp:FileUpload ID="f_Image" runat="server" CssClass="d-none" />
                     </div>
                     <script>
                         var fr = new FileReader();
                         fr.onload = function (e) {
-                            document.getElementById("<%= img_Student.ClientID %>").src = this.result;
+                            document.getElementById("<%= img_Faculty.ClientID %>").src = this.result;
                         };
-                        document.getElementById("<%= s_Image.ClientID %>").addEventListener("change", function () {
+                        document.getElementById("<%= f_Image.ClientID %>").addEventListener("change", function () {
                             fr.readAsDataURL(this.files[0]);
                         });
                     </script>
@@ -125,10 +125,10 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Content_AForm" Runat="Server">
-    <div class="card mb-4" runat="server" id="area_student_list">
+    <div class="card mb-4" runat="server" id="area_Faculty_list">
         <div class="card-header bg-dark text-white">
             <i class="fas fa-table mr-1"></i>
-            Students
+            Faculties
         </div>
         <div class="card-body overflow-auto">
             <table class="table table-bordered w-100" id="dataTable">
@@ -148,46 +148,44 @@
                                            
                         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
                         con.Open();
-                        SqlCommand cmd = new SqlCommand("SELECT * FROM students", con);
+                        SqlCommand cmd = new SqlCommand("SELECT * FROM faculty", con);
                         SqlDataReader reader = cmd.ExecuteReader();
                         while (reader.Read())
                         { %>
                     <tr>
                         <td>
-                            <%= reader["s_id"].ToString().Trim() %>
+                            <%= reader["f_id"].ToString().Trim() %>
                         </td>
                         <td>
-                            <img height="100" src="../<%=Helper.get_Student_Image(reader["s_image"].ToString().Trim())%>" />
+                            <img height="100" src="../<%=Helper.get_Faculty_Image(reader["f_image"].ToString().Trim())%>" />
                         </td>
                         <td>
                             <b>Name :</b><br />
-                            <%= reader["s_name"].ToString().Trim() %><br />
-                            <b>Father Name :</b><br />
-                            <%= reader["s_fathername"].ToString().Trim() %><br />
+                            <%= reader["f_name"].ToString().Trim() %><br />
                             <b>DOB :</b><br />
-                            <%= reader["s_dob"].ToString().Trim() %><br />
+                            <%= reader["f_dob"].ToString().Trim() %><br />
                             <b>Gender :</b><br />
-                            <%= reader["s_gender"].ToString().Trim() %>
+                            <%= reader["f_gender"].ToString().Trim() %>
                         </td>
                         <td>
                             <b>Mobile :</b><br />
-                            <%= reader["s_mobile"].ToString().Trim() %><br />
+                            <%= reader["f_mobile"].ToString().Trim() %><br />
                             <b>Email :</b><br />
-                            <%= reader["s_email"].ToString().Trim() %>
+                            <%= reader["f_email"].ToString().Trim() %>
                         </td>
                         <td>
                             <b>Addresss :</b><br />
-                            <%= reader["s_address"].ToString().Trim() %><br />
+                            <%= reader["f_address"].ToString().Trim() %><br />
                             <b>City :</b><br />
-                            <%= reader["s_city"].ToString().Trim() %>
+                            <%= reader["f_city"].ToString().Trim() %>
                             <br />
                             <b>Pincode :</b><br />
-                            <%= reader["s_pincode"].ToString().Trim() %>
+                            <%= reader["f_pincode"].ToString().Trim() %>
                         </td>
                         <td>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <a class="myedit" href="students.aspx?edit=<%= reader["s_id"].ToString().Trim() %>"><i class="btn btn-primary">Edit</i></a>
+                                    <a class="myedit" href="faculty.aspx?edit=<%= reader["f_id"].ToString().Trim() %>"><i class="btn btn-primary">Edit</i></a>
                                     </a>
                                 </div>
                             </div>
@@ -195,7 +193,7 @@
                         <td>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <a class="delete" href="students.aspx?delete=<%= reader["s_id"].ToString().Trim() %>"><i class="btn btn-danger">Delete</i></a>
+                                    <a class="delete" href="faculty.aspx?delete=<%= reader["f_id"].ToString().Trim() %>"><i class="btn btn-danger">Delete</i></a>
                                 </div>
                             </div>
                         </td>
