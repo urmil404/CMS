@@ -22,7 +22,7 @@ public partial class admission : System.Web.UI.Page
         con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
         con.Open();
 
-        SqlCommand cmd = new SqlCommand("SELECT s_course FROM students WHERE s_id=" + Session["student_id"], con);
+        SqlCommand cmd = new SqlCommand("SELECT COALESCE(s_course,0) FROM students WHERE s_id=" + Session["student_id"], con);
         int c_id = (int)cmd.ExecuteScalar();
         if (c_id != 0)
         {

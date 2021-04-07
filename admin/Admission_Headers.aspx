@@ -6,7 +6,7 @@
     <div class="my-3">
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="Default.aspx">Dashboard</a></li>
-            <li class="breadcrumb-item">Admissions</li>
+            <li class="breadcrumb-item">Admission Headers</li>
         </ol>
     </div>
 </asp:Content>
@@ -14,7 +14,7 @@
     <div class="card mb-4 my-4">
         <div class="card-header bg-dark text-white">
             <i class="fas fa-table mr-1"></i>
-            Add Admission
+            Add Admission-Headers
         </div>
         <div class="card-body">
             <div class="row">
@@ -146,7 +146,7 @@ SELECT publisher.*, COALESCE(CONVERT(VARCHAR,updatedate, 105), '00-00-0000') AS 
     <div class="card mb-4" runat="server" id="area_user_list">
         <div class="card-header bg-dark text-white">
             <i class="fas fa-table mr-1"></i>
-            Admissions
+            Admission Headers
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -209,7 +209,7 @@ SELECT publisher.*, COALESCE(CONVERT(VARCHAR,updatedate, 105), '00-00-0000') AS 
                             </td>
                             <td>
                                 <div class="col-md-2">
-                                    <div class="form-group">
+                                    <div class="form-group text-center">
                                         <a class="delete" href="Admission_Headers.aspx?delete=<%= reader["ah_id"].ToString().Trim() %>"><i class="btn btn-danger">Delete</i></a>
                                     </div>
                                 </div>

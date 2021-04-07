@@ -65,7 +65,7 @@ public partial class registration : System.Web.UI.Page
             ncmd.ExecuteNonQuery();
             Session["student_id"] = res;
             Helper.setSmsg("Your are Registered Successfully.");
-            Response.Redirect("Admission.aspx");
+            Response.Redirect("admission.aspx");
 
         }
         else

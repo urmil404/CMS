@@ -5,6 +5,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Content_BForm" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content_Form" Runat="Server">
+   <div class="my-3">
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="Default.aspx">Dashboard</a></li>
+            <li class="breadcrumb-item">Faculties</li>
+        </ol>
+    </div>
     <div class="card my-4">
         <div class="card-header bg-dark text-white">
             <i class="fas fa-table mr-1"></i>
@@ -193,7 +199,7 @@
                         <td>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <a class="delete" href="faculty.aspx?delete=<%= reader["f_id"].ToString().Trim() %>"><i class="btn btn-danger">Delete</i></a>
+                                    <a class="myedit" href="faculty.aspx?delete=<%= reader["f_id"].ToString().Trim() %>"><i class="btn btn-danger">Delete</i></a>
                                 </div>
                             </div>
                         </td>

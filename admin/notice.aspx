@@ -8,7 +8,7 @@
     <div class="card my-4">
         <div class="card-header bg-dark text-white">
             <i class="fas fa-table mr-1"></i>
-            Add Student
+            Add Notice
         </div>
         <div class="card-body">
             <div class="mb-3">

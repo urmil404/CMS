@@ -160,7 +160,7 @@
                         </td>
                         <td>
                             <div class="col-md-2">
-                                <div class="form-group">
+                                <div class="form-group text-center">
                                     <a class="delete" href="admissions.aspx?delete=<%= reader["ad_id"].ToString().Trim() %>"><i class="btn btn-danger">Delete</i></a>
                                 </div>
                             </div>
