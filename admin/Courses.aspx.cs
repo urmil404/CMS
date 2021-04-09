@@ -18,6 +18,11 @@ public partial class admin_Courses : System.Web.UI.Page
         con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
         con.Open();
 
+        if (Session["admin_id"] == null)
+        {
+            Response.Redirect("admin_login.aspx");
+        }
+
         if (Request.QueryString["edit"] != null && !IsPostBack)
         {
             Load_Courses();

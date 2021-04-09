@@ -19,6 +19,12 @@ public partial class admin_faculty : System.Web.UI.Page
         con.Open();
         i_path = MapPath("../" + Helper.WEBSITE_FACULTY_PATH);
 
+
+        if (Session["admin_id"] == null)
+        {
+            Response.Redirect("admin_login.aspx");
+        }
+
         if (Request.QueryString["edit"] != null && !IsPostBack)
         {
             Load_Faculty();

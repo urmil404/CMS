@@ -20,6 +20,11 @@ public partial class admin_Students : System.Web.UI.Page
         con.Open();
         i_path = MapPath("../" + Helper.WEBSITE_STUDENT_PATH);
 
+        if (Session["admin_id"] == null)
+        {
+            Response.Redirect("admin_login.aspx");
+        }
+
         if (Request.QueryString["edit"] != null && !IsPostBack)
         {
             Load_Student();
@@ -153,7 +158,6 @@ public partial class admin_Students : System.Web.UI.Page
 
         cmd.ExecuteNonQuery();
         Success("Record Delete Successfully.");
-
     }
     public void Success(String msg, Boolean refresh = true)
     {

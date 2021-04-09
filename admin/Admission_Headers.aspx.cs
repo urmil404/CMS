@@ -18,6 +18,11 @@ public partial class admin_Admission_Headers : System.Web.UI.Page
         con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
         con.Open();
 
+        if (Session["admin_id"] == null)
+        {
+            Response.Redirect("admin_login.aspx");
+        }
+
         if (Request.QueryString["cid"] != null)
         {
             SqlCommand cmd = new SqlCommand("SELECT c_fees, c_maxsem FROM courses WHERE c_id = " + Request.QueryString["cid"], con);

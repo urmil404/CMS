@@ -9,7 +9,10 @@ public partial class admin_notice : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["admin_id"] == null)
+        {
+            Response.Redirect("admin_login.aspx");
+        }
     }
     protected void add_notice(object sender, EventArgs e)
     {

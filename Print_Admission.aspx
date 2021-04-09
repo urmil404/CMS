@@ -46,6 +46,7 @@
 <!-- STYLESHEETS ============================================= -->
 <link rel="stylesheet" type="text/css" href="public/assets/css/style.css">
 <link class="skin" rel="stylesheet" type="text/css" href="public/assets/css/color/color-1.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
 <script src="public/assets/js/sweetalert.min.js"></script>
 
 <style>
@@ -136,7 +137,7 @@
 
                                 <% SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
                                    con.Open();
-                                   SqlCommand cmd = new SqlCommand("SELECT students.*,Admissions.*,courses.*,CONVERT(VARCHAR,ad_date, 105) as addate FROM students,Admissions,courses WHERE ad_course=c_id AND  ad_student=s_id AND s_id=" + Session["student_id"], con);
+                                   SqlCommand cmd = new SqlCommand("SELECT students.*,Admissions.*,courses.*,CONVERT(VARCHAR,ad_date, 105) as addate FROM students,Admissions,courses WHERE ad_course=c_id AND  ad_student=s_id AND s_id=" + Session["student_id"]+" AND ad_id="+Request.QueryString["id"], con);
                                    //Response.Write(cmd.CommandText);
                                    SqlDataReader reader = cmd.ExecuteReader();
                                    while (reader.Read())

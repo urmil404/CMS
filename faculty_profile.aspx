@@ -1,14 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="student_profile.aspx.cs" Inherits="student_profile" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="faculty_profile.aspx.cs" Inherits="faculty_profile" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="mainContent" runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="mainContent" Runat="Server">
     <div class="page-content bg-white">
         <!-- inner page banner -->
-        <div class="page-banner ovbl-dark" style="background-image: url(public/assets/images/banner/banner3.jpg);">
+        <div class="page-banner ovbl-dark" style="background-image: url(public/assets/images/banner/banner1.jpg);">
             <div class="container my-5">
                 <div class="page-banner-entry">
-                    <h1 class="text-white">Student Profile</h1>
+                    <h1 class="text-white">Faculty Profile</h1>
                 </div>
             </div>
         </div>
@@ -17,7 +17,7 @@
             <div class="container">
                 <ul class="list-inline">
                     <li><a href="Default.aspx">Home</a></li>
-                    <li>Student Profile</li>
+                    <li>Faculty Profile</li>
                 </ul>
             </div>
         </div>
@@ -60,6 +60,9 @@
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#quiz-results"><i class="ti-bookmark-alt"></i>Quiz Results </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#edit-profile"><i class="ti-pencil-alt"></i>Edit Profile</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#change-password"><i class="ti-lock"></i>Change Password</a>
@@ -373,6 +376,6 @@
         <!-- contact area END -->
     </div>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="Server">
+<asp:Content ID="Content3" ContentPlaceHolderID="footer" Runat="Server">
 </asp:Content>
 

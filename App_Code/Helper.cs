@@ -17,6 +17,7 @@ public static class Helper
     // Other Details
     public static String WEBSITE_STUDENT_PATH = "public/students/";
     public static String WEBSITE_FACULTY_PATH = "public/facultly/";
+    public static String WEBSITE_ASSIGNMENT_PATH = "public/assignments/";
 
     public static void END(Object o)
     {
