@@ -137,7 +137,7 @@ public partial class admin_Students : System.Web.UI.Page
             txt_student_Name.Text = reader["s_name"].ToString().Trim();
             txt_student_Fathername.Text = reader["s_fathername"].ToString().Trim();
             txt_student_Dob.Text = reader["s_dob"].ToString().Trim();
-            ddl_student_gender.Text = reader["s_gender"].ToString().Trim();
+            ddl_Gender.SelectedValue = reader["s_gender"].ToString().Trim();
             txt_student_Mobile.Text = reader["s_mobile"].ToString().Trim();
             txt_student_email.Text = reader["s_email"].ToString().Trim();
             txt_student_address.Text = reader["s_address"].ToString().Trim();

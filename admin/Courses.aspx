@@ -19,18 +19,32 @@
         <div class="card-body">
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="txt_Course_Name">Course Name</asp:Label>
-                <asp:TextBox ID="txt_Course_Name" CssClass="form-control" runat="server">              
-                </asp:TextBox>
+                <asp:TextBox ID="txt_Course_Name" CssClass="form-control" runat="server"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="txt_Course_Name_rfv" runat="server"
+                    ErrorMessage="* Please Select Course"
+                    CssClass="text-valid text-danger pl-2"
+                    ControlToValidate="txt_Course_Name" Display="Dynamic">
+                </asp:RequiredFieldValidator>
             </div>
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="txt_Max_Sem">Max Semester</asp:Label>
-                <asp:TextBox ID="txt_Max_Sem" CssClass="form-control" runat="server">              
+                <asp:TextBox ID="txt_Max_Sem" CssClass="form-control" runat="server">
                 </asp:TextBox>
+                <asp:RequiredFieldValidator ID="txt_Max_Sem_rfv" runat="server"
+                    ErrorMessage="* Please Select Max Semester"
+                    CssClass="text-valid text-danger pl-2"
+                    ControlToValidate="txt_Max_Sem" Display="Dynamic">
+                </asp:RequiredFieldValidator>
             </div>
             <div class="form-group">
                 <asp:Label runat="server" AssociatedControlID="txt_Fees">Fees</asp:Label>
                 <asp:TextBox ID="txt_Fees" CssClass="form-control" runat="server">              
                 </asp:TextBox>
+                <asp:RequiredFieldValidator ID="txt_Fees_rfv" runat="server"
+                    ErrorMessage="* Please Select Fees"
+                    CssClass="text-valid text-danger pl-2"
+                    ControlToValidate="txt_Fees" Display="Dynamic">
+                </asp:RequiredFieldValidator>
             </div>
         </div>
         <div class="card-footer pb-2">

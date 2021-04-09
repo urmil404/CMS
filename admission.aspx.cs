@@ -28,10 +28,11 @@ public partial class admission : System.Web.UI.Page
         {
             cmd = new SqlCommand("SELECT COUNT(*) FROM Admission_Headers WHERE ah_course = " + c_id + " AND ah_sem =(SELECT MAX(ad_sem)+1 FROM Admissions WHERE ad_course = " + c_id + " AND ad_student = " + Session["student_id"] + ") AND ah_startdate <= CAST(GETDATE() AS Date) AND ah_enddate >= CAST(GETDATE() AS Date)", con);
             int flag = (int)cmd.ExecuteScalar();
+            //Helper.END(flag==0);
             if (flag == 0)
             {
                 Helper.setSmsg("There is no admission Available");
-                Response.Redirect("Default.aspx");
+                Response.Redirect("student_profile.aspx");
             }
         }
         //DateTime dateTime = DateTime.UtcNow.Date;
@@ -64,14 +65,17 @@ public partial class admission : System.Web.UI.Page
         }
         else
         {
-            Response.Write("New");
-            da = new SqlDataAdapter("SELECT ah_id, CONCAT(REPLICATE('0',3-LEN(ah_id)),ah_id,' ', c_name ,' Sem - ', ah_sem) AS ah_title FROM Admission_Headers, courses WHERE c_id = ah_course AND ah_sem= (SELECT COALESCE( MAX(ad_sem),0) FROM Admissions WHERE ad_student = " + Session["student_id"] + ") AND ah_startdate <= CAST(GETDATE() AS Date) AND ah_enddate >= CAST(GETDATE() AS Date)", con);
+            //Response.Write("Newk");
+
+            da = new SqlDataAdapter("SELECT ah_id, CONCAT(REPLICATE('0',3-LEN(ah_id)),ah_id,' ', c_name ,' Sem - ', ah_sem) AS ah_title FROM Admission_Headers, courses WHERE c_id = ah_course AND ah_sem= (SELECT COALESCE( MAX(ad_sem),0)+1 FROM Admissions WHERE ad_student = " + Session["student_id"] + ") AND ah_startdate <= CAST(GETDATE() AS Date) AND ah_enddate >= CAST(GETDATE() AS Date)", con);
         }
-        DataSet ds = new DataSet();
-        da.Fill(ds);
-        if (ds.Tables[0].Rows.Count > 0)
+        DataTable dt = new DataTable();
+        da.Fill(dt);
+        //Helper.END(da);
+        //Helper.END(dt.Rows.Count);
+        if (dt.Rows.Count > 0)
         {
-            ddl_Admission_Header.DataSource = ds;
+            ddl_Admission_Header.DataSource = dt;
             ddl_Admission_Header.DataValueField = "ah_id";
             ddl_Admission_Header.DataTextField = "ah_title";
             ddl_Admission_Header.DataBind();
@@ -119,7 +123,7 @@ public partial class admission : System.Web.UI.Page
             String GR = PreFix + GR_id;
             cmd = new SqlCommand("UPDATE students SET s_course='" + course_id + "', s_gr='" + GR + "'WHERE s_id=" + Session["student_id"], con);
             cmd.ExecuteNonQuery();
-            Response.Redirect("admission.aspx");
+            Response.Redirect("student_profile.aspx");
         }
         else
         {

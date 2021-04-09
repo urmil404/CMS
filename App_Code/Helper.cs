@@ -18,6 +18,12 @@ public static class Helper
     public static String WEBSITE_STUDENT_PATH = "public/students/";
     public static String WEBSITE_FACULTY_PATH = "public/facultly/";
 
+    public static void END(Object o)
+    {
+        HttpContext.Current.Response.Write(o.ToString());
+        HttpContext.Current.Response.End();
+    }
+
     public static String get_Faculty_Image(String name = "")
     {
         if (name.Equals(""))

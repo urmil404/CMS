@@ -44,7 +44,7 @@ public partial class admin_faculty : System.Web.UI.Page
             area_Faculty_list.Visible = false;
             txt_Faculty_Name.Text = reader["f_name"].ToString().Trim();
             txt_Faculty_Dob.Text = reader["f_dob"].ToString().Trim();
-            ddl_Faculty_gender.Text = reader["f_gender"].ToString().Trim();
+            ddl_Gender.SelectedValue = reader["f_gender"].ToString().Trim();
             txt_Faculty_Mobile.Text = reader["f_mobile"].ToString().Trim();
             txt_Faculty_email.Text = reader["f_email"].ToString().Trim();
             txt_Faculty_address.Text = reader["f_address"].ToString().Trim();
