@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="faculty_profile.aspx.cs" Inherits="faculty_profile" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="mainContent" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="mainContent" runat="Server">
     <div class="page-content bg-white">
         <!-- inner page banner -->
         <div class="page-banner ovbl-dark" style="background-image: url(public/assets/images/banner/banner1.jpg);">
@@ -26,23 +26,23 @@
         <div class="content-block">
             <!-- About Us -->
             <div class="section-area section-sp1">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-3 col-md-4 col-sm-12 m-b30">
                             <%
                                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
                                 con.Open();
-                                SqlCommand cmd = new SqlCommand("SELECT * FROM students WHERE s_id=" + Session["student_id"], con);
+                                SqlCommand cmd = new SqlCommand("SELECT * FROM faculty WHERE f_id=" + Session["faculty_id"], con);
                                 SqlDataReader reader = cmd.ExecuteReader();
                                 while (reader.Read())
                                 { %>
                             <div class="profile-bx text-center">
                                 <div class="user-profile-thumb">
-                                    <img src="<%=Helper.get_Student_Image(reader["s_image"].ToString().Trim())%>" />
+                                    <img src="<%=Helper.get_Faculty_Image(reader["f_image"].ToString().Trim())%>" />
                                 </div>
                                 <div class="profile-info">
-                                    <h4><%= reader["s_name"].ToString().Trim() %></h4>
-                                    <span><%= reader["s_email"].ToString().Trim() %></span>
+                                    <h4><%= reader["f_name"].ToString().Trim() %></h4>
+                                    <span><%= reader["f_email"].ToString().Trim() %></span>
                                     <% } %>
                                 </div>
                                 <div class="profile-social">
@@ -56,13 +56,10 @@
                                 <div class="profile-tabnav">
                                     <ul class="nav nav-tabs">
                                         <li class="nav-item">
-                                            <a class="nav-link active" data-toggle="tab" href="#courses"><i class="ti-book"></i>Courses</a>
+                                            <a class="nav-link active" data-toggle="tab" href="#courses"><i class="ti-book"></i>Students</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#quiz-results"><i class="ti-bookmark-alt"></i>Quiz Results </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#edit-profile"><i class="ti-pencil-alt"></i>Edit Profile</a>
+                                            <a class="nav-link" data-toggle="tab" href="#quiz-results"><i class="ti-bookmark-alt"></i>Assignmets</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#change-password"><i class="ti-lock"></i>Change Password</a>
@@ -79,7 +76,7 @@
                                             <div class="container">
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <h3>My Admissions</h3>
+                                                        <h3>Student Admissions</h3>
                                                     </div>
                                                     <div class="col-md-7">
                                                         <button type="button" class="btn btn-sm red float-right" onclick="location.href='admission.aspx';">New Admission</button>
@@ -91,33 +88,28 @@
                                             <div class="container-fluid">
                                                 <div class="card mb-4" runat="server" id="area_student_list">
                                                     <div class="card-header bg-dark text-white">
-                                                        <i class="mr-1"></i>
-                                                        Admissions
+                                                        <i class="fas fa-table mr-1"></i>
+                                                        Students
                                                     </div>
                                                     <div class="card-body overflow-auto">
                                                         <table class="table table-bordered w-100" id="dataTable">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>#</th>
-                                                                    <th>Name</th>
+                                                                    <th>Admission ID</th>
+                                                                    <th>Student Name</th>
                                                                     <th>Course</th>
                                                                     <th>Sem</th>
-                                                                    <th>Fees</th>
-                                                                    <th>Date</th>
-                                                                    <th>Fees Status</th>
-                                                                    <th>Admission Status</th>
-                                                                    <th>Print</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <% SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
-                                                                   con.Open();
-                                                                   SqlCommand cmd = new SqlCommand("SELECT students.*,Admissions.*,courses.*,CONVERT(VARCHAR,ad_date, 105) as addate FROM students,Admissions,courses WHERE ad_course=c_id AND  ad_student=s_id AND s_id=" + Session["student_id"], con);
-                                                                   //Response.Write(cmd.CommandText);
-                                                                   ////Response.End();
-                                                                   SqlDataReader reader = cmd.ExecuteReader();
-                                                                   while (reader.Read())
-                                                                   {%>
+                                                                <% 
+                                           
+                                                                    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
+                                                                    con.Open();
+                                                                    SqlCommand cmd = new SqlCommand("SELECT students.*,Admissions.*,courses.*,CONVERT(VARCHAR,ad_date, 105) as addate FROM students,Admissions,courses WHERE ad_course=c_id AND ad_student=s_id AND ad_status='Approved'", con);
+                                                                    SqlDataReader reader = cmd.ExecuteReader();
+                                                                    while (reader.Read())
+                                                                    { %>
                                                                 <tr>
                                                                     <td>
                                                                         <%= reader["ad_id"].ToString().Trim() %>
@@ -131,42 +123,15 @@
                                                                     <td>
                                                                         <%= reader["ad_sem"].ToString().Trim() %>
                                                                     </td>
-                                                                    <td>
-                                                                        <%= reader["ad_fees"].ToString().Trim() %>
-                                                                    </td>
-                                                                    <td>
-                                                                        <%= reader["addate"].ToString().Trim() %>
-                                                                    </td>
-                                                                    <td>
-                                                                        <%= reader["ad_payment"].ToString().Trim() %>
-                                                                    </td>
-                                                                    <td>
-                                                                        <%= reader["ad_status"].ToString().Trim() %>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="col-md-2">
-                                                                            <div class="form-group">
-                                                                                <a class="myedit" href="Print_Admission.aspx?id=<%= reader["ad_id"].ToString().Trim() %>"><i
-                                                                                    class="btn btn-sm green">Print</i></a>
-                                                                                </a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-
                                                                 </tr>
                                                                 <% } %>
                                                             </tbody>
                                                             <tfoot>
                                                                 <tr>
-                                                                    <th>#</th>
+                                                                    <th>Admission ID</th>
                                                                     <th>Name</th>
                                                                     <th>Course</th>
                                                                     <th>Sem</th>
-                                                                    <th>Fees</th>
-                                                                    <th>Date</th>
-                                                                    <th>Fees Status</th>
-                                                                    <th>Admission Status</th>
-                                                                    <th>Print</th>
                                                                 </tr>
                                                             </tfoot>
                                                             <tbody>
@@ -180,32 +145,93 @@
                                     </div>
                                     <div class="tab-pane" id="quiz-results">
                                         <div class="profile-head">
-                                            <h3>Quiz Results</h3>
+                                            <h3>Assignments</h3>
                                         </div>
                                         <div class="courses-filter">
                                             <div class="row">
-                                                <div class="col-md-6 col-lg-6">
-                                                    <ul class="course-features">
-                                                        <li><i class="ti-book"></i><span class="label">Lectures</span> <span class="value">8</span></li>
-                                                        <li><i class="ti-help-alt"></i><span class="label">Quizzes</span> <span class="value">1</span></li>
-                                                        <li><i class="ti-time"></i><span class="label">Duration</span> <span class="value">60 hours</span></li>
-                                                        <li><i class="ti-stats-up"></i><span class="label">Skill level</span> <span class="value">Beginner</span></li>
-                                                        <li><i class="ti-smallcap"></i><span class="label">Language</span> <span class="value">English</span></li>
-                                                        <li><i class="ti-user"></i><span class="label">Students</span> <span class="value">32</span></li>
-                                                        <li><i class="ti-check-box"></i><span class="label">Assessments</span> <span class="value">Yes</span></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-md-6 col-lg-6">
-                                                    <ul class="course-features">
-                                                        <li><i class="ti-book"></i><span class="label">Lectures</span> <span class="value">8</span></li>
-                                                        <li><i class="ti-help-alt"></i><span class="label">Quizzes</span> <span class="value">1</span></li>
-                                                        <li><i class="ti-time"></i><span class="label">Duration</span> <span class="value">60 hours</span></li>
-                                                        <li><i class="ti-stats-up"></i><span class="label">Skill level</span> <span class="value">Beginner</span></li>
-                                                        <li><i class="ti-smallcap"></i><span class="label">Language</span> <span class="value">English</span></li>
-                                                        <li><i class="ti-user"></i><span class="label">Students</span> <span class="value">32</span></li>
-                                                        <li><i class="ti-check-box"></i><span class="label">Assessments</span> <span class="value">Yes</span></li>
-                                                    </ul>
-                                                </div>
+                                               <div class="card mb-4" runat="server" id="area_assignment_list">
+        <div class="card-header bg-dark text-white">
+            <i class="fas fa-table mr-1"></i>
+            Assignments
+        </div>
+        <div class="card-body overflow-auto">
+            <table class="table table-bordered w-100" id="dataTable">
+                <thead>
+                    <tr>
+                        <th>Assignment ID</th>
+                        <th>Title</th>
+                        <th>File</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Download</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%                                           
+                        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
+                        con.Open();
+                        SqlCommand cmd = new SqlCommand("SELECT *,CONVERT(VARCHAR,a_sdate, 105) as sdate,CONVERT(VARCHAR,a_edate, 105) as edate FROM assignments", con);
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        { %>
+                    <tr>
+                        <td>
+                            <%= reader["a_id"].ToString().Trim() %>
+                        </td>
+                        <td>
+                            <%= reader["a_title"].ToString().Trim() %><br />
+                        </td>
+                        <td>
+                            <%= reader["a_file"].ToString().Trim() %><br />
+                        </td>
+                        <td>
+                            <%= reader["sdate"].ToString().Trim() %><br />
+                        </td>
+                        <td>
+                            <%= reader["edate"].ToString().Trim() %><br />
+                        </td>
+                        <td>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <% if (reader["a_file"].ToString().Trim() != "no assignmets available")
+                                       {
+                                    %>
+                                    <a class="myedit" href="../public/assignments/<%=reader["a_file"].ToString().Trim() %>" target="_blank"><i class="btn btn-sm green">Download</i></a>
+                                    </a>
+                                           <%
+                                       }
+                                           %>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <a class="delete" href="faculty_profile.aspx?delete=<%= reader["a_id"].ToString().Trim() %>"><i class="btn btn-sm red">Delete</i></a>
+                                </div>
+                            </div>
+                        </td>
+
+                    </tr>
+                    <% } %>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Assignment ID</th>
+                        <th>Title</th>
+                        <th>File</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Download</th>
+                        <th>Delete</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
                                             </div>
                                         </div>
                                     </div>
@@ -363,7 +389,6 @@
                                                     <button type="reset" class="btn-secondry">Cancel</button>
                                                 </div>
                                             </div>
-
                                         </form>
                                     </div>
                                 </div>
@@ -376,6 +401,6 @@
         <!-- contact area END -->
     </div>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="footer" Runat="Server">
+<asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="Server">
 </asp:Content>
 

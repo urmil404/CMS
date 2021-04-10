@@ -112,21 +112,6 @@ public partial class admin_assignments : System.Web.UI.Page
             Response.Redirect("admin_login.aspx");
         }
     }
-    //public void Load_assignment()
-    //{
-    //    SqlCommand cmd = new SqlCommand("SELECT * FROM faculty WHERE f_id = " + Request.QueryString["edit"], con);
-    //    SqlDataReader reader = cmd.ExecuteReader();
-    //    if (reader.Read())
-    //    {
-    //        btn_Upd_assignment.Visible = true;
-    //        btn_Add_assignment.Visible = false;
-    //        area_assignment_list.Visible = false;
-    //        ddl_course.SelectedValue = reader["a_ah_id"].ToString().Trim();
-    //        txt_sdate.Text = reader["a_sdate"].ToString().Trim();
-    //        txt_edate.Text = reader["a_edate"].ToString().Trim();
-
-    //    }
-    //}
     public void Delete_assignment()
     {
         //del assignemt

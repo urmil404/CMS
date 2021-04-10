@@ -48,7 +48,7 @@
                             <ul>
                                 <li></li>
                                 <%
-                                    if (Session["student_id"] != null)
+                                    if (Session["student_id"] != null || Session["faculty_id"] != null)
                                     {
                                 %>
                                 <li><a href="logout.aspx">Logout</a></li>

@@ -85,18 +85,18 @@
 							<div class="col-lg-12">
 								<div class="form-group">
 									<div class="input-group">
-										<label for="student_gender" class="form-label">Role</label>
-												<asp:DropDownList runat="server" ID="student_gender"
+										<label for="student_role" class="form-label">Role</label>
+												<asp:DropDownList runat="server" ID="student_role"
 													CssClass="form-select">
 													<asp:ListItem>Students</asp:ListItem>
 													<asp:ListItem>Faculty</asp:ListItem>
 													<asp:ListItem>Employees</asp:ListItem>
 													<asp:ListItem>Other</asp:ListItem>
 												</asp:DropDownList>
-												<asp:RequiredFieldValidator ID="rfv_Gender" runat="server"
-													ErrorMessage="* Please Select Gender"
+												<asp:RequiredFieldValidator ID="rfv_role" runat="server"
+													ErrorMessage="* Please Select Role"
 													CssClass="text-valid text-danger pl-2"
-													ControlToValidate="student_gender" Display="Dynamic">
+													ControlToValidate="student_role" Display="Dynamic">
 												</asp:RequiredFieldValidator>
 									</div>
 								</div>

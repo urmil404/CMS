@@ -72,7 +72,7 @@
     <div class="card mb-4" runat="server" id="area_assignment_list">
         <div class="card-header bg-dark text-white">
             <i class="fas fa-table mr-1"></i>
-            Students
+            Assignments
         </div>
         <div class="card-body overflow-auto">
             <table class="table table-bordered w-100" id="dataTable">

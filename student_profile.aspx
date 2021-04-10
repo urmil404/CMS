@@ -26,7 +26,7 @@
         <div class="content-block">
             <!-- About Us -->
             <div class="section-area section-sp1">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-3 col-md-4 col-sm-12 m-b30">
                             <%
@@ -59,7 +59,7 @@
                                             <a class="nav-link active" data-toggle="tab" href="#courses"><i class="ti-book"></i>Courses</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#quiz-results"><i class="ti-bookmark-alt"></i>Quiz Results </a>
+                                            <a class="nav-link" data-toggle="tab" href="#quiz-results"><i class="ti-bookmark-alt"></i>Assignments</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" data-toggle="tab" href="#change-password"><i class="ti-lock"></i>Change Password</a>
@@ -177,31 +177,90 @@
                                     </div>
                                     <div class="tab-pane" id="quiz-results">
                                         <div class="profile-head">
-                                            <h3>Quiz Results</h3>
+                                            <h3>Assignments</h3>
                                         </div>
                                         <div class="courses-filter">
-                                            <div class="row">
-                                                <div class="col-md-6 col-lg-6">
-                                                    <ul class="course-features">
-                                                        <li><i class="ti-book"></i><span class="label">Lectures</span> <span class="value">8</span></li>
-                                                        <li><i class="ti-help-alt"></i><span class="label">Quizzes</span> <span class="value">1</span></li>
-                                                        <li><i class="ti-time"></i><span class="label">Duration</span> <span class="value">60 hours</span></li>
-                                                        <li><i class="ti-stats-up"></i><span class="label">Skill level</span> <span class="value">Beginner</span></li>
-                                                        <li><i class="ti-smallcap"></i><span class="label">Language</span> <span class="value">English</span></li>
-                                                        <li><i class="ti-user"></i><span class="label">Students</span> <span class="value">32</span></li>
-                                                        <li><i class="ti-check-box"></i><span class="label">Assessments</span> <span class="value">Yes</span></li>
-                                                    </ul>
+                                            <div class="card mb-4" runat="server" id="area_assignment_list">
+                                                <div class="card-header bg-dark text-white">
+                                                    <i class="fas fa-table mr-1"></i>
+                                                    Assignments
                                                 </div>
-                                                <div class="col-md-6 col-lg-6">
-                                                    <ul class="course-features">
-                                                        <li><i class="ti-book"></i><span class="label">Lectures</span> <span class="value">8</span></li>
-                                                        <li><i class="ti-help-alt"></i><span class="label">Quizzes</span> <span class="value">1</span></li>
-                                                        <li><i class="ti-time"></i><span class="label">Duration</span> <span class="value">60 hours</span></li>
-                                                        <li><i class="ti-stats-up"></i><span class="label">Skill level</span> <span class="value">Beginner</span></li>
-                                                        <li><i class="ti-smallcap"></i><span class="label">Language</span> <span class="value">English</span></li>
-                                                        <li><i class="ti-user"></i><span class="label">Students</span> <span class="value">32</span></li>
-                                                        <li><i class="ti-check-box"></i><span class="label">Assessments</span> <span class="value">Yes</span></li>
-                                                    </ul>
+                                                <div class="card-body overflow-auto">
+                                                    <table class="table table-bordered w-100" id="dataTable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Assignment ID</th>
+                                                                <th>Title</th>
+                                                                <th>File</th>
+                                                                <th>Start Date</th>
+                                                                <th>End Date</th>
+                                                                <th>Download</th>
+                                                                <th>Upload</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <%                                           
+                                                                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
+                                                                con.Open();
+                                                                SqlCommand cmd = new SqlCommand("SELECT *,CONVERT(VARCHAR,a_sdate, 105) as sdate,CONVERT(VARCHAR,a_edate, 105) as edate FROM assignments, admissions WHERE a_ah_id = ad_ah AND ad_student = " + Session["student_id"], con);
+                                                                SqlDataReader reader = cmd.ExecuteReader();
+                                                                while (reader.Read())
+                                                                { %>
+                                                            <tr>
+                                                                <td>
+                                                                    <%= reader["a_id"].ToString().Trim() %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= reader["a_title"].ToString().Trim() %><br />
+                                                                </td>
+                                                                <td>
+                                                                    <%= reader["a_file"].ToString().Trim() %><br />
+                                                                </td>
+                                                                <td>
+                                                                    <%= reader["sdate"].ToString().Trim() %><br />
+                                                                </td>
+                                                                <td>
+                                                                    <%= reader["edate"].ToString().Trim() %><br />
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-md-2">
+                                                                        <div class="form-group">
+                                                                            <% if (reader["a_file"].ToString().Trim() != "no assignmets available")
+                                                                               {
+                                                                            %>
+                                                                            <a class="myedit" href="../public/assignments/<%=reader["a_file"].ToString().Trim() %>" target="_blank"><i class="btn btn-sm green">Download</i></a>
+                                                                            </a>
+                                           <%
+                                       }
+                                           %>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="col-md-2">
+                                                                        <div class="form-group">
+                                                                            <a class="myedit" href="student_assignments.aspx?upload=<%= reader["a_id"].ToString().Trim() %>"><i class="btn btn-sm blue">Upload</i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+
+                                                            </tr>
+                                                            <% } %>
+                                                        </tbody>
+                                                        <tfoot>
+                                                            <tr>
+                                                                <th>Assignment ID</th>
+                                                                <th>Title</th>
+                                                                <th>File</th>
+                                                                <th>Start Date</th>
+                                                                <th>End Date</th>
+                                                                <th>Download</th>
+                                                                <th>Upload</th>
+                                                            </tr>
+                                                        </tfoot>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>

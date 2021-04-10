@@ -18,8 +18,8 @@ public partial class Client_login : System.Web.UI.Page
     }
     protected void client_btn_submit_Click(object sender, EventArgs e)
     {
-       
-        if (student_gender.Text.ToString().Trim() == "Students")
+
+        if (student_role.Text.ToString().Trim() == "Students")
         {
             String uname = username.Text;
             String pass = password.Text;
@@ -61,19 +61,37 @@ public partial class Client_login : System.Web.UI.Page
             }
             Response.End();
         }
-        else  if (student_gender.Text.ToString().Trim() == "Faculty")
+        else if (student_role.Text.ToString().Trim() == "Faculty")
         {
-            Response.Write("faculty section");
-        }
-        else if (student_gender.Text.ToString().Trim() == "Employees")
-        {
-            Response.Write("Employee section");
-        }
-        else
-        {
-            Response.Write("Other peoples can see this section");
-        }
+            String uname = username.Text;
+            String pass = password.Text;
+            SqlCommand cmd = new SqlCommand("SELECT * FROM faculty WHERE f_email = '" + uname + "'", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                String faculty_id = reader["f_id"].ToString().Trim();
+                String student_username = reader["f_email"].ToString().Trim();
+                String student_password = reader["f_password"].ToString().Trim();
 
-
+                if (student_password == pass)
+                {
+                    Session["faculty_id"] = faculty_id;
+                    Session["faculty_username"] = uname;
+                    Helper.setSmsg("Login Successfull");
+                    Response.Redirect("faculty_profile.aspx");
+                }
+                else
+                {
+                    Helper.setAmsg("Invalid Password");
+                    Response.Redirect("login.aspx");
+                }
+            }
+            else
+            {
+                Helper.setAmsg("You Are Not Registred...");
+                Response.Redirect("login.aspx");
+            }
+            Response.End();
+        }
     }
 }
