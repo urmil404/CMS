@@ -15,10 +15,10 @@ public partial class Client_login : System.Web.UI.Page
     {
         con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
         con.Open();
+
     }
     protected void client_btn_submit_Click(object sender, EventArgs e)
     {
-
         if (student_role.Text.ToString().Trim() == "Students")
         {
             String uname = username.Text;
@@ -33,11 +33,17 @@ public partial class Client_login : System.Web.UI.Page
                 //Int32 s_course = ;
 
                 if (student_password == pass)
-                //if(String.Compare(student_password,pass) == 0)
                 {
                     Helper.setSmsg("Login Successfull");
                     Session["student_id"] = student_id;
                     Session["student_username"] = uname;
+
+                    if (Session["fine"] == null)
+                    {
+
+                        Response.Redirect("student_fine.aspx");
+
+                    }
                     if ((int)reader["s_course"] == 0)
                     {
                         Helper.setSmsg("Let's Take admission");

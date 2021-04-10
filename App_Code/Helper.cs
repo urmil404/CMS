@@ -20,9 +20,12 @@ public static class Helper
     public static String WEBSITE_ASSIGNMENT_PATH = "public/assignments/";
     public static String WEBSITE_SUBMITED_PATH = "public/submited/";
 
-    public static void END(Object o)
+    public static void END(params Object[] os)
     {
-        HttpContext.Current.Response.Write(o.ToString());
+        foreach (Object o in os)
+        {
+            HttpContext.Current.Response.Write(o.ToString() + "<br>");
+        }
         HttpContext.Current.Response.End();
     }
 
@@ -95,5 +98,5 @@ public static class Helper
         }
     }
 
-   
+
 }

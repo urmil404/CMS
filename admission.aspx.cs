@@ -61,7 +61,6 @@ public partial class admission : System.Web.UI.Page
         if (c_id != 0)
         {
             da = new SqlDataAdapter("SELECT ah_id, CONCAT(REPLICATE('0',3-LEN(ah_id)),ah_id,' ', c_name ,' Sem - ', ah_sem) AS ah_title FROM Admission_Headers, courses WHERE c_id = ah_course AND ah_course = " + c_id + " AND ah_sem= (SELECT COALESCE( MAX(ad_sem),0)+1 FROM Admissions WHERE ad_student = " + Session["student_id"] + ") AND ah_startdate <= CAST(GETDATE() AS Date) AND ah_enddate >= CAST(GETDATE() AS Date)", con);
-            
         }
         else
         {
