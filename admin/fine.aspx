@@ -55,7 +55,7 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Content_AForm" runat="Server">
-     <div class="card mb-4" runat="server" id="area_assignment_list">
+     <div class="card mb-4 my-4" runat="server" id="area_assignment_list">
         <div class="card-header bg-dark text-white">
             <i class="fas fa-table mr-1"></i>
             Fines

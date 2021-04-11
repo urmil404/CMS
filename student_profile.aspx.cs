@@ -22,15 +22,15 @@ public partial class student_profile : System.Web.UI.Page
         {
             Response.Redirect("login.aspx");
         }
+
+    }
+    protected void take_admission(object sender, EventArgs e)
+    {
         if (Session["fine"] == null)
         {
 
             Response.Redirect("student_fine.aspx");
-
         }
-    }
-    protected void take_admission(object sender, EventArgs e)
-    {
         Response.Redirect("admission.aspx");
     }
 

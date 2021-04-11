@@ -52,7 +52,7 @@ public partial class admin_assignments : System.Web.UI.Page
         }
         else
         {
-            Helper.setAmsg("Admissions Closed");
+            Helper.setAmsg("Assignments Closed");
             Response.Redirect("Default.aspx");
         }
     }

@@ -90,8 +90,6 @@
 													CssClass="form-select">
 													<asp:ListItem>Students</asp:ListItem>
 													<asp:ListItem>Faculty</asp:ListItem>
-													<asp:ListItem>Employees</asp:ListItem>
-													<asp:ListItem>Other</asp:ListItem>
 												</asp:DropDownList>
 												<asp:RequiredFieldValidator ID="rfv_role" runat="server"
 													ErrorMessage="* Please Select Role"

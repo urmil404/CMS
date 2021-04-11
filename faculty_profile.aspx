@@ -1,8 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="faculty_profile.aspx.cs" Inherits="faculty_profile" enableEventValidation="false"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="faculty_profile.aspx.cs" Inherits="faculty_profile" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>  
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContent" runat="Server">
+
     <div class="page-content bg-white">
         <!-- inner page banner -->
         <div class="page-banner ovbl-dark" style="background-image: url(public/assets/images/banner/banner1.jpg);">
@@ -45,14 +47,6 @@
                                     <span><%= reader["f_email"].ToString().Trim() %></span>
                                     <% } %>
                                 </div>
-                                <div class="profile-social">
-                                    <ul class="list-inline m-a0">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    </ul>
-                                </div>
                                 <div class="profile-tabnav">
                                     <ul class="nav nav-tabs">
                                         <li class="nav-item">
@@ -85,7 +79,7 @@
                                             <div class="container-fluid">
                                                 <div class="card mb-4" runat="server" id="area_student_list">
                                                     <div class="card-header bg-dark text-white">
-                                                        <i class="fas fa-table mr-1"></i>
+                                                        <i class="fas fa-users mr-1"></i>
                                                         Students
                                                     </div>
                                                     <div class="card-body overflow-auto">
@@ -141,80 +135,78 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="quiz-results">
-                                       
-
                                         <div class="profile-head">
                                             <h3>Assignments</h3>
                                         </div>
                                         <div class="courses-filter">
 
-                                             <div class="card my-4">
-                                            <div class="card-header bg-dark text-white">
-                                                <i class="fas fa-table mr-1"></i>
-                                                Add Assignment
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="mb-3">
-                                                    <asp:Label runat="server" AssociatedControlID="ddl_course">Course</asp:Label>
-                                                    <asp:DropDownList CssClass="form-control" ID="ddl_course" runat="server">
-                                                    </asp:DropDownList>
-                                                    <asp:RequiredFieldValidator ID="course_rfv" runat="server"
-                                                        ErrorMessage="* Please Select Course"
-                                                        CssClass="text-valid text-danger pl-2"
-                                                        ControlToValidate="ddl_course" Display="Dynamic">
-                                                    </asp:RequiredFieldValidator>
+                                            <div class="card my-4">
+                                                <div class="card-header bg-dark text-white">
+                                                    <i class="fas fa-book-open mr-1"></i>
+                                                    Add Assignment
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="txt_assignment" class="form-label">Assignment Title</label>
-                                                    <asp:TextBox CssClass="form-control" ID="txt_assignment" Rows="2" runat="server"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="txt_assignment_rfv" runat="server"
-                                                        ErrorMessage="* Please Select Assignment"
-                                                        CssClass="text-valid text-danger pl-2"
-                                                        ControlToValidate="txt_assignment" Display="Dynamic">
-                                                    </asp:RequiredFieldValidator>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="upd_assignment" class="form-label">Upload your Assignment File</label>
-                                                    <asp:FileUpload CssClass="form-control" ID="upd_assignment" runat="server" />
-                                                    <asp:RequiredFieldValidator ID="upd_assignment_rfv" runat="server"
-                                                        ErrorMessage="* Please Select Assignment"
-                                                        CssClass="text-valid text-danger pl-2"
-                                                        ControlToValidate="upd_assignment" Display="Dynamic">
-                                                    </asp:RequiredFieldValidator>
-                                                </div>
+                                                <div class="card-body">
+                                                    <div class="mb-3">
+                                                        <asp:Label runat="server" AssociatedControlID="ddl_course">Course</asp:Label>
+                                                        <asp:DropDownList CssClass="form-control" ID="ddl_course" runat="server">
+                                                        </asp:DropDownList>
+                                                        <asp:RequiredFieldValidator ID="course_rfv" runat="server"
+                                                            ErrorMessage="* Please Select Course"
+                                                            CssClass="text-valid text-danger pl-2"
+                                                            ControlToValidate="ddl_course" Display="Dynamic">
+                                                        </asp:RequiredFieldValidator>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="txt_assignment" class="form-label">Assignment Title</label>
+                                                        <asp:TextBox CssClass="form-control" ID="txt_assignment" Rows="2" runat="server"></asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="txt_assignment_rfv" runat="server"
+                                                            ErrorMessage="* Please Select Assignment"
+                                                            CssClass="text-valid text-danger pl-2"
+                                                            ControlToValidate="txt_assignment" Display="Dynamic">
+                                                        </asp:RequiredFieldValidator>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="upd_assignment" class="form-label">Upload your Assignment File</label>
+                                                        <asp:FileUpload CssClass="form-control" ID="upd_assignment" runat="server" />
+                                                        <asp:RequiredFieldValidator ID="upd_assignment_rfv" runat="server"
+                                                            ErrorMessage="* Please Select Assignment"
+                                                            CssClass="text-valid text-danger pl-2"
+                                                            ControlToValidate="upd_assignment" Display="Dynamic">
+                                                        </asp:RequiredFieldValidator>
+                                                    </div>
 
-                                            </div>
-                                            <div class="row my-3 mx-3">
-                                                <div class="form-group col-3">
-                                                    <asp:Label runat="server" AssociatedControlID="txt_sdate">Start Date</asp:Label>
-                                                    <asp:TextBox ID="txt_sdate" TextMode="Date" CssClass="form-control" runat="server">
-                                                    </asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="txt_sdate_rfv" runat="server"
-                                                        ErrorMessage="* Please Select Date"
-                                                        CssClass="text-valid text-danger pl-2"
-                                                        ControlToValidate="txt_sdate" Display="Dynamic">
-                                                    </asp:RequiredFieldValidator>
                                                 </div>
-                                                <div class="form-group col-3">
-                                                    <asp:Label runat="server" AssociatedControlID="txt_edate">End Date</asp:Label>
-                                                    <asp:TextBox ID="txt_edate" TextMode="Date" CssClass="form-control" runat="server">
-                                                    </asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="txt_edate_rfv" runat="server"
-                                                        ErrorMessage="* Please Select Date"
-                                                        CssClass="text-valid text-danger pl-2"
-                                                        ControlToValidate="txt_edate" Display="Dynamic">
-                                                    </asp:RequiredFieldValidator>
+                                                <div class="row my-3 mx-3">
+                                                    <div class="form-group col-3">
+                                                        <asp:Label runat="server" AssociatedControlID="txt_sdate">Start Date</asp:Label>
+                                                        <asp:TextBox ID="txt_sdate" TextMode="Date" CssClass="form-control" runat="server">
+                                                        </asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="txt_sdate_rfv" runat="server"
+                                                            ErrorMessage="* Please Select Date"
+                                                            CssClass="text-valid text-danger pl-2"
+                                                            ControlToValidate="txt_sdate" Display="Dynamic">
+                                                        </asp:RequiredFieldValidator>
+                                                    </div>
+                                                    <div class="form-group col-3">
+                                                        <asp:Label runat="server" AssociatedControlID="txt_edate">End Date</asp:Label>
+                                                        <asp:TextBox ID="txt_edate" TextMode="Date" CssClass="form-control" runat="server">
+                                                        </asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="txt_edate_rfv" runat="server"
+                                                            ErrorMessage="* Please Select Date"
+                                                            CssClass="text-valid text-danger pl-2"
+                                                            ControlToValidate="txt_edate" Display="Dynamic">
+                                                        </asp:RequiredFieldValidator>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer pb-2">
+                                                    <asp:Button CssClass="btn btn-success" Text="Add Assignment" ID="btn_Add_assignment" runat="server" OnClick="add_assignment" />
                                                 </div>
                                             </div>
-                                            <div class="card-footer pb-2">
-                                                <asp:Button CssClass="btn btn-success" Text="Add Assignment" ID="btn_Add_assignment" runat="server" OnClick="add_assignment" />
-                                            </div>
-                                        </div>
 
                                             <div class="row">
                                                 <div class="card mb-4" runat="server" id="area_assignment_list">
                                                     <div class="card-header bg-dark text-white">
-                                                        <i class="fas fa-table mr-1"></i>
+                                                        <i class="fas fa-book-open mr-1"></i>
                                                         Assignments
                                                     </div>
                                                     <div class="card-body overflow-auto">
@@ -227,6 +219,7 @@
                                                                     <th>Start Date</th>
                                                                     <th>End Date</th>
                                                                     <th>Download</th>
+                                                                    <th>View</th>
                                                                     <th>Delete</th>
                                                                 </tr>
                                                             </thead>
@@ -260,11 +253,18 @@
                                                                                 <% if (reader["a_file"].ToString().Trim() != "no assignmets available")
                                                                                    {
                                                                                 %>
-                                                                                <a class="myedit" href="../public/assignments/<%=reader["a_file"].ToString().Trim() %>" target="_blank"><i class="btn btn-sm green">Download</i></a>
+                                                                                <a class="myedit" href="../public/assignments/<%=reader["a_file"].ToString().Trim() %>" target="_blank"><i class="btn btn-sm green fa-trash">Download</i></a>
                                                                                 </a>
                                            <%
                                                                                    }
                                            %>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="col-md-2">
+                                                                            <div class="form-group">
+                                                                                <a class="delete" href="view_submissions.aspx?view=<%= reader["a_id"].ToString().Trim() %>"><i class="btn btn-sm purple">View</i></a>
                                                                             </div>
                                                                         </div>
                                                                     </td>
@@ -287,6 +287,7 @@
                                                                     <th>Start Date</th>
                                                                     <th>End Date</th>
                                                                     <th>Download</th>
+                                                                    <th>View</th>
                                                                     <th>Delete</th>
                                                                 </tr>
                                                             </tfoot>
@@ -298,174 +299,87 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="edit-profile">
-                                        <div class="profile-head">
-                                            <h3>Edit Profile</h3>
-                                        </div>
-                                        <form class="edit-profile">
-                                            <div class="">
-                                                <div class="form-group row">
-                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-10 ml-auto">
-                                                        <h3>1. Personal Details</h3>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Full Name</label>
-                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                        <input class="form-control" type="text" value="Mark Andre">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Occupation</label>
-                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                        <input class="form-control" type="text" value="CTO">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Company Name</label>
-                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                        <input class="form-control" type="text" value="EduChamp">
-                                                        <span class="help">If you want your invoices addressed to a company. Leave blank to use your full name.</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Phone No.</label>
-                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                        <input class="form-control" type="text" value="+120 012345 6789">
-                                                    </div>
-                                                </div>
-
-                                                <div class="seperator"></div>
-
-                                                <div class="form-group row">
-                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-10 ml-auto">
-                                                        <h3>2. Address</h3>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Address</label>
-                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                        <input class="form-control" type="text" value="5-S2-20 Dummy City, UK">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">City</label>
-                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                        <input class="form-control" type="text" value="US">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">State</label>
-                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                        <input class="form-control" type="text" value="California">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Postcode</label>
-                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                        <input class="form-control" type="text" value="000702">
-                                                    </div>
-                                                </div>
-
-                                                <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
-
-                                                <div class="form-group row">
-                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-10 ml-auto">
-                                                        <h3 class="m-form__section">3. Social Links</h3>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row">
-                                                    <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Linkedin</label>
-                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                        <input class="form-control" type="text" value="www.linkedin.com">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Facebook</label>
-                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                        <input class="form-control" type="text" value="www.facebook.com">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Twitter</label>
-                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                        <input class="form-control" type="text" value="www.twitter.com">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-12 col-sm-3 col-md-3 col-lg-2 col-form-label">Instagram</label>
-                                                    <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                        <input class="form-control" type="text" value="www.instagram.com">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="">
-                                                <div class="">
-                                                    <div class="row">
-                                                        <div class="col-12 col-sm-3 col-md-3 col-lg-2">
-                                                        </div>
-                                                        <div class="col-12 col-sm-9 col-md-9 col-lg-7">
-                                                            <button type="reset" class="btn">Save changes</button>
-                                                            <button type="reset" class="btn-secondry">Cancel</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
+                                   
                                     <div class="tab-pane" id="change-password">
                                         <div class="profile-head">
-                                            <h3>Fines</h3>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <h3>Pending Fines</h3>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <button type="button" class="btn btn-sm red float-right" onclick="location.href='add_fine.aspx';">Add Fine</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                       <div class="card mb-4 my-4">
-        <div class="card-header bg-dark text-white">
-            <i class="fas fa-table mr-1"></i>
-            Add Fine
-        </div>
-        <div class="card-body">
-            <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="ddl_student" ID="ddl_student_name">Fine</asp:Label>
-                <asp:DropDownList ID="ddl_student" CssClass="form-control" runat="server">
-                    <asp:ListItem Value="">--Student--</asp:ListItem>
-                    <asp:ListItem>Urmil</asp:ListItem>
-                </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="ddl_student_rfv" runat="server"
-                    ErrorMessage="* Please Select Student"
-                    CssClass="text-valid text-danger pl-2"
-                    ControlToValidate="ddl_student" Display="Dynamic">
-                </asp:RequiredFieldValidator>
-            </div>
-            <div class="form-group">
-                <label for="txt_fine" class="form-label">Assignment Title</label>
-                <asp:TextBox CssClass="form-control" ID="txt_fine" Rows="2" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="txt_fine_rfv" runat="server"
-                    ErrorMessage="* Please Select Fine title"
-                    CssClass="text-valid text-danger pl-2"
-                    ControlToValidate="txt_fine" Display="Dynamic">
-                </asp:RequiredFieldValidator>
-            </div>
-            <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="ddl_Fine" ID="ddl_student_gender">Fine</asp:Label>
-                <asp:DropDownList ID="ddl_Fine" CssClass="form-control" runat="server">
-                    <asp:ListItem Value="">--Fine--</asp:ListItem>
-                    <asp:ListItem>100</asp:ListItem>
-                    <asp:ListItem>200</asp:ListItem>
-                    <asp:ListItem>500</asp:ListItem>
-                    <asp:ListItem>1000</asp:ListItem>
-                    <asp:ListItem>5000</asp:ListItem>
-                </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="ddl_Fine_rfv" runat="server"
-                    ErrorMessage="* Please Select Fine"
-                    CssClass="text-valid text-danger pl-2"
-                    ControlToValidate="ddl_Fine" Display="Dynamic">
-                </asp:RequiredFieldValidator>
-            </div>
-        </div>
-        <div class="card-footer pb-2">
-            <asp:Button CssClass="btn btn-success" Text="Add Fine" ID="txt_Add_Fine" runat="server" OnClick="add_fine" />
-        </div>
-    </div>
+                                        <div class="card mb-4 my-4 mx-4" runat="server" id="Div1">
+                                            <div class="card-header bg-dark text-white">
+                                                <i class="fas fa-money-check-alt mr-1"></i>
+                                                Fines
+                                            </div>
+                                            <div class="card-body overflow-auto">
+                                                <table class="table table-bordered w-100" id="dataTable">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Fine ID</th>
+                                                            <th>Students</th>
+                                                            <th>Title</th>
+                                                            <th>Amount</th>
+                                                            <th>Status</th>
+                                                            <th>Delete</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <%                                           
+                                                            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
+                                                            con.Open();
+                                                            SqlCommand cmd = new SqlCommand("SELECT *,s_name FROM fine,students WHERE f_status='Pending' AND s_id=f_student", con);
+                                                            SqlDataReader reader = cmd.ExecuteReader();
+                                                            while (reader.Read())
+                                                            { %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= reader["f_id"].ToString().Trim() %>
+                                                            </td>
+                                                            <td>
+                                                                <%= reader["s_name"].ToString().Trim() %><br />
+                                                            </td>
+                                                            <td>
+                                                                <%= reader["f_title"].ToString().Trim() %><br />
+                                                            </td>
+                                                            <td>
+                                                                <%= reader["f_amount"].ToString().Trim() %><br />
+                                                            </td>
+                                                            <td>
+                                                                <%= reader["f_status"].ToString().Trim() %><br />
+                                                            </td>
+                                                            <td>
+                                                                <div class="col-md-2">
+                                                                    <div class="form-group">
+                                                                        <a class="delete" href="faculty_profile.aspx?deletefine=<%= reader["f_id"].ToString().Trim() %>"><i class="btn btn-danger">Delete</i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+
+                                                        </tr>
+                                                        <% } %>
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>Fine ID</th>
+                                                            <th>Students</th>
+                                                            <th>Title</th>
+                                                            <th>Amount</th>
+                                                            <th>Status</th>
+                                                            <th>Delete</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

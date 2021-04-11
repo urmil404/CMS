@@ -393,7 +393,7 @@
             </div>
             <!-- Our Services END -->
             <!-- Popular Courses -->
-            <div class="section-area section-sp2 popular-courses-bx">
+            <div class="section-area section-sp2 popular-courses-bx" id="course">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 heading-bx left">
@@ -569,7 +569,7 @@
                 </div>
             </div>
             <!-- Form END -->
-            <div class="section-area section-sp2">
+            <div class="section-area section-sp2" id="Events">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-center heading-bx">

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="student_profile.aspx.cs" Inherits="student_profile" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>  
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContent" runat="Server">
     <div class="page-content bg-white">
@@ -46,12 +47,6 @@
                                     <% } %>
                                 </div>
                                 <div class="profile-social">
-                                    <ul class="list-inline m-a0">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    </ul>
                                 </div>
                                 <div class="profile-tabnav">
                                     <ul class="nav nav-tabs">
@@ -88,7 +83,7 @@
                                             <div class="container-fluid">
                                                 <div class="card mb-4" runat="server" id="area_student_list">
                                                     <div class="card-header bg-dark text-white">
-                                                        <i class="mr-1"></i>
+                                                        <i class="fas fa-user-graduate mr-1"></i>
                                                         Admissions
                                                     </div>
                                                     <div class="card-body overflow-auto">
@@ -182,7 +177,7 @@
                                         <div class="courses-filter">
                                             <div class="card mb-4" runat="server" id="area_assignment_list">
                                                 <div class="card-header bg-dark text-white">
-                                                    <i class="fas fa-table mr-1"></i>
+                                                    <i class="fas fa-book mr-1"></i>
                                                     Assignments
                                                 </div>
                                                 <div class="card-body overflow-auto">

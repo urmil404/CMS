@@ -56,7 +56,7 @@ public partial class student_assignments : System.Web.UI.Page
                     String filename = upd_assignment.FileName;
                     SqlCommand ncmd = new SqlCommand("UPDATE submissions SET sub_file = '" + filename + "' WHERE sub_id =" + res, con);
                     ncmd.ExecuteNonQuery();
-                    Helper.setSmsg("Assignment Uploaded Successfully."+res.ToString());
+                    Helper.setSmsg("Assignment Uploaded Successfully.");
                     Response.Redirect("student_profile.aspx");
                 }
             }

@@ -38,11 +38,9 @@ public partial class Client_login : System.Web.UI.Page
                     Session["student_id"] = student_id;
                     Session["student_username"] = uname;
 
-                    if (Session["fine"] == null)
+                    if (Session["fine"]!=null)
                     {
-
                         Response.Redirect("student_fine.aspx");
-
                     }
                     if ((int)reader["s_course"] == 0)
                     {

@@ -36,14 +36,11 @@ public partial class faculty_profile : System.Web.UI.Page
         {
             Bound_Data();
         }
-         if (!IsPostBack)
-        {
-            Bound_Data_fine();
-        }
-        if (Request.QueryString["delete"] != null && !IsPostBack)
+        if (Request.QueryString["deletefine"] != null && !IsPostBack)
         {
             Delete_fine();
         }
+        
     }
     public void Bound_Data()
     {
@@ -137,58 +134,11 @@ public partial class faculty_profile : System.Web.UI.Page
         Helper.setSmsg("Assignment Downloaded Successfully.");
         Response.Redirect("assignments.aspx");
     }
-    //public void Delete_assignment()
-    //{
-    //    //del assignemt
-    //    SqlCommand cmd = new SqlCommand("DELETE FROM assignments WHERE a_id='" + Request.QueryString["delete"].ToString().Trim() + "'", con);
-    //    cmd.ExecuteNonQuery();
-    //    Success("Record Delete Successfully.");
-    //}
-    //public void Success(String msg, Boolean refresh = true)
-    //{
-    //    Helper.setSmsg(msg);
-    //    if (refresh)
-    //    {
-    //        Response.Redirect("faculty_profile.aspx");
-    //    }
-    //}
-    protected void add_fine(object sender, EventArgs e)
-    {
-        String f_student = ddl_student.SelectedValue.ToString().Trim();
-        String f_title = txt_fine.Text.ToString();
-        String f_amount = ddl_Fine.Text.ToString();
-        SqlCommand cmd = new SqlCommand("INSERT INTO fine(f_student,f_title,f_amount) output INSERTED.f_id values(@student,@title,@amount)", con);
-        cmd.Parameters.AddWithValue("@student", f_student);
-        cmd.Parameters.AddWithValue("@title", f_title);
-        cmd.Parameters.AddWithValue("@amount", f_amount);
-        int res = (int)cmd.ExecuteScalar();
-        if (Convert.ToBoolean(res))
-        {
-            Helper.setSmsg("Fine added Successfully.");
-            Response.Redirect("faculty_profile.aspx");
-        }
-        else
-        {
-            Helper.setSmsg("Error in Fine Addition.");
-            Response.Redirect("faculty_profile.aspx");
-        }
-    }
-    public void Bound_Data_fine()
-    {
-        DataSet ds = new DataSet();
-        SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM students", con);
-        da.Fill(ds);
-        ddl_student.DataSource = ds;
-        ddl_student.DataValueField = "s_id";
-        ddl_student.DataTextField = "s_name";
-        ddl_student.DataBind();
-        ddl_student.Items.Insert(0, new ListItem("--Select--", ""));
-    }
-
+  
     public void Delete_fine()
     {
         //del fine
-        SqlCommand cmd = new SqlCommand("DELETE FROM fine WHERE f_id='" + Request.QueryString["delete"].ToString().Trim() + "'", con);
+        SqlCommand cmd = new SqlCommand("DELETE FROM fine WHERE f_id='" + Request.QueryString["deletefine"].ToString().Trim() + "'", con);
         cmd.ExecuteNonQuery();
         Helper.setSmsg("Record Delete Successfully.");
     }
