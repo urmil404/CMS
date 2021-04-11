@@ -38,10 +38,8 @@ public partial class Client_login : System.Web.UI.Page
                     Session["student_id"] = student_id;
                     Session["student_username"] = uname;
 
-                    if (Session["fine"]!=null)
-                    {
-                        Response.Redirect("student_fine.aspx");
-                    }
+
+                    
                     if ((int)reader["s_course"] == 0)
                     {
                         Helper.setSmsg("Let's Take admission");
@@ -49,6 +47,17 @@ public partial class Client_login : System.Web.UI.Page
                     }
                     else
                     {
+                        reader.Close();
+                        SqlCommand c = new SqlCommand("SELECT COUNT(*) FROM fine WHERE f_student = " + student_id + " AND f_status = 'unpaid'", con);
+                        if (((int)c.ExecuteScalar()) > 0)
+                        {
+                            Session["fine"] = true;
+                            Response.Redirect("student_fine.aspx");
+                        }
+                        else
+                        {
+                            Session["fine"] = false;
+                        }
                         Response.Redirect("Default.aspx");
                     }
                 }

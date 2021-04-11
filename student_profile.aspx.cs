@@ -22,6 +22,10 @@ public partial class student_profile : System.Web.UI.Page
         {
             Response.Redirect("login.aspx");
         }
+        if (Convert.ToBoolean(Session["fine"]) )
+        {
+            Response.Redirect("student_fine.aspx");
+        }
 
     }
     protected void take_admission(object sender, EventArgs e)

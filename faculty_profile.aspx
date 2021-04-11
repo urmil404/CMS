@@ -253,7 +253,7 @@
                                                                                 <% if (reader["a_file"].ToString().Trim() != "no assignmets available")
                                                                                    {
                                                                                 %>
-                                                                                <a class="myedit" href="../public/assignments/<%=reader["a_file"].ToString().Trim() %>" target="_blank"><i class="btn btn-sm green fa-trash">Download</i></a>
+                                                                                <a class="myedit" href="../public/assignments/<%=reader["a_file"].ToString().Trim() %>" target="_blank"><i class="btn btn-sm green">Download</i></a>
                                                                                 </a>
                                            <%
                                                                                    }

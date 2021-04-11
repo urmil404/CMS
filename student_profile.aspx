@@ -136,11 +136,30 @@
                                                                         <%= reader["ad_status"].ToString().Trim() %>
                                                                     </td>
                                                                     <td>
+                                                                       
+                                                                    </td>
+                                                                    <td>
                                                                         <div class="col-md-2">
                                                                             <div class="form-group">
-                                                                                <a class="myedit" href="Print_Admission.aspx?id=<%= reader["ad_id"].ToString().Trim() %>"><i
+                                                                                 <%
+                                                                             
+                                                                        //Boolean fl = Convert.ToBoolean(reader["sub_id"]);
+                                                                       Boolean fl = reader["ad_status"] != "pending";
+                                                                        %>
+                                                                        <%
+                                                                        if (fl)
+                                                                        {
+                                                                            %>
+                                                                                 <a class="myedit" href="Print_Admission.aspx?id=<%= reader["ad_id"].ToString().Trim() %>"><i
                                                                                     class="btn btn-sm green">Print</i></a>
                                                                                 </a>
+                                                                                <%
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            Response.Write("Not Submited");
+                                                                        }
+                                                                        %>
                                                                             </div>
                                                                         </div>
                                                                     </td>

@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="view_submissions.aspx.cs" Inherits="view_submissions" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContent" runat="Server">
     <div class="page-content bg-white">
@@ -81,8 +81,9 @@
                                                         <table class="table table-bordered w-100" id="dataTable">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>ID</th>
-                                                                    <th>Final</th>
+                                                                    <th>GR no.</th>
+                                                                    <th>Name</th>
+                                                                    <th>File</th>
                                                                     <th>Download</th>
                                                                 </tr>
                                                             </thead>
@@ -90,28 +91,45 @@
                                                                 <%                                           
                                                                     SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["sqlcon"].ConnectionString);
                                                                     con.Open();
-                                                                    SqlCommand cmd = new SqlCommand("SELECT * FROM submissions", con);
+                                                                    SqlCommand cmd = new SqlCommand("SELECT * FROM assignments JOIN Admissions ON  a_ah_id = ad_ah JOIN students ON ad_student = s_id LEFT JOIN submissions ON  submissions.sub_a_id = assignments.a_id AND submissions.sub_user_id = Admissions.ad_student WHERE a_id = " + Request.QueryString["view"], con);
                                                                     SqlDataReader reader = cmd.ExecuteReader();
                                                                     while (reader.Read())
                                                                     { %>
                                                                 <tr>
                                                                     <td>
-                                                                        <%= reader["sub_id"].ToString().Trim() %>
+                                                                        <%= reader["s_gr"].ToString().Trim() %>
                                                                     </td>
                                                                     <td>
-                                                                        <%= reader["sub_file"].ToString().Trim() %><br />
+                                                                        <%= reader["s_name"].ToString().Trim() %><br />
+                                                                    </td>
+                                                                    <td>
+                                                                        <%
+                                                                             
+                                                                        //Boolean fl = Convert.ToBoolean(reader["sub_id"]);
+                                                                        Boolean fl = reader["sub_id"] !=DBNull.Value;
+                                                                        %>
+                                                                        <%
+                                                                        if (fl)
+                                                                        {
+                                                                            Response.Write(reader["sub_file"].ToString().Trim());
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            Response.Write("Not Submited");
+                                                                        }
+                                                                        %>
                                                                     </td>
                                                                     <td>
                                                                         <div class="col-md-2">
                                                                             <div class="form-group">
-                                                                                <% if (reader["sub_file"].ToString().Trim() != null)
-                                                                                   {
+                                                                                <%
+                                                                        if (fl)
+                                                                        {
                                                                                 %>
-                                                                                <a class="myedit" href="../public/submited/<%=reader["sub_file"].ToString().Trim() %>" target="_blank"><i class="btn btn-sm green">Download</i></a>
-                                                                                </a>
-                                           <%
-                                                                                   }
-                                           %>
+                                                                                <a class="myedit" href="../public/submited/<%=reader["sub_file"].ToString().Trim() %>" target="_blank"><i class="btn btn-sm pink">view</i></a>
+                                                                                <%
+                                                                        }
+                                                                                %>
                                                                             </div>
                                                                         </div>
                                                                     </td>
@@ -120,8 +138,9 @@
                                                             </tbody>
                                                             <tfoot>
                                                                 <tr>
-                                                                    <th>ID</th>
-                                                                    <th>Final</th>
+                                                                    <th>GR no.</th>
+                                                                    <th>Name</th>
+                                                                    <th>File</th>
                                                                     <th>Download</th>
                                                                 </tr>
                                                             </tfoot>
