@@ -123,7 +123,7 @@
                                 </li>
                                 <li><a href="javascript:;">Campus <i class="fa fa-chevron-down"></i></a>
                                     <ul class="sub-menu">
-                                        
+
                                         <li><a href="javascript:;">Notice Board<i class="fa fa-angle-right"></i></a>
                                             <ul class="sub-menu">
                                                 <li><a href="student_notice.aspx">Notice</a></li>
@@ -131,20 +131,16 @@
                                         </li>
                                         <li><a href="javascript:;">Contact Us<i class="fa fa-angle-right"></i></a>
                                             <ul class="sub-menu">
-                                                <li><a href="contact-1.html">Contact Us 1</a></li>
-                                                <li><a href="contact-2.html">Contact Us 2</a></li>
+                                                <li><a href="contact.aspx">Contact Us</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="javascript:;">About<i class="fa fa-angle-right"></i></a>
                                             <ul class="sub-menu">
                                                 <li><a href="About.aspx">About Collage</a></li>
-                                                <li><a href="Aboutme.aspx">About me</a></li>
                                             </ul>
                                         </li>
-                                        <%--<li><a href="portfolio.html">Portfolio</a></li>
-                                        <li><a href="profile.html">Profile</a></li>
-                                        <li><a href="membership.html">Membership</a></li>
-                                        <li><a href="error-404.html">404 Page</a></li>--%>
+                                        <li><a href="Default.aspx?#Events">Events</a></li>
+                                        <li><a href="Default.aspx?#course">Courses</a></li>
                                     </ul>
                                 </li>
                                 <li class="add-mega-menu"><a href="javascript:;">Management<i class="fa fa-chevron-down"></i></a>
@@ -152,9 +148,8 @@
                                         <li class="add-menu-left">
                                             <h5 class="menu-adv-title">Faculty</h5>
                                             <ul>
-                                                 <li><a href="faculty_profile.aspx">Instructor Profile</a></li>
-                                                <li><a href="Default.aspx?#Events">Events</a></li>
-                                                <li><a href="Default.aspx?#course">Courses Details</a></li>
+                                                <li><a href="faculty_profile.aspx">Instructor Profile</a></li>
+
                                             </ul>
                                         </li>
                                         <li class="add-menu-right">
@@ -434,9 +429,9 @@
             swal({
                 title: "Error",
                 text: "<%= String.Join("\\n", (String[]) Session["amsg"]) %>",
-				icon: "error"
-			});
-		});
+                icon: "error"
+            });
+        });
         <%
             Session["amsg"] = null;
         }
@@ -449,9 +444,9 @@
             swal({
                 title: "Success",
                 text: "<%= String.Join("\\n", (String[]) Session["smsg"]) %>",
-				icon: "success"
-			});
-		});
+                icon: "success"
+            });
+        });
         <%
             Session["smsg"] = null;
         }
