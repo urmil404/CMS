@@ -1,13 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/MasterPage.master" AutoEventWireup="true" CodeFile="assignments.aspx.cs" Inherits="admin_assignments" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content_BForm" runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Content_Form" runat="Server">
     <div class="card my-4">
         <div class="card-header bg-dark text-white">
-            <i class="fas fa-table mr-1"></i>
+            <i class="fas fa-book-open mr-1"></i>
             Add Assignment
         </div>
         <div class="card-body">
@@ -71,7 +73,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="Content_AForm" runat="Server">
     <div class="card mb-4" runat="server" id="area_assignment_list">
         <div class="card-header bg-dark text-white">
-            <i class="fas fa-table mr-1"></i>
+            <i class="fas fa-book-open mr-1"></i>
             Assignments
         </div>
         <div class="card-body overflow-auto">
@@ -117,7 +119,7 @@
                                     <% if (reader["a_file"].ToString().Trim() != "no assignmets available")
                                        {
                                     %>
-                                    <a class="myedit" href="../public/assignments/<%=reader["a_file"].ToString().Trim() %>" target="_blank"><i class="btn btn-warning">Download</i></a>
+                                    <a class="myedit" href="../public/assignments/<%=reader["a_file"].ToString().Trim() %>" target="_blank"><i class="btn btn-warning"><i class="fas fa-download"></i>&nbsp; Download</i></i></a>
                                     </a>
                                            <%
                                        }
@@ -128,7 +130,7 @@
                         <td>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <a class="delete" href="assignments.aspx?delete=<%= reader["a_id"].ToString().Trim() %>"><i class="btn btn-danger">Delete</i></a>
+                                    <a class="delete" href="assignments.aspx?delete=<%= reader["a_id"].ToString().Trim() %>"><i class="btn btn-danger"><i class="fas fa-trash"></i>&nbsp; Delete</i></i></a>
                                 </div>
                             </div>
                         </td>

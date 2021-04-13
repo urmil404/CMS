@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/MasterPage.master" AutoEventWireup="true" CodeFile="Admission_Headers.aspx.cs" Inherits="admin_Admission_Headers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content_BForm" runat="Server">
     <div class="my-3">
@@ -13,7 +15,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Content_Form" runat="Server">
     <div class="card mb-4 my-4">
         <div class="card-header bg-dark text-white">
-            <i class="fas fa-table mr-1"></i>
+            <i class="fas fa-university mr-1"></i>
             Add Admission-Headers
         </div>
         <div class="card-body">
@@ -145,7 +147,7 @@ SELECT publisher.*, COALESCE(CONVERT(VARCHAR,updatedate, 105), '00-00-0000') AS 
 <asp:Content ID="Content4" ContentPlaceHolderID="Content_AForm" runat="Server">
     <div class="card mb-4" runat="server" id="area_user_list">
         <div class="card-header bg-dark text-white">
-            <i class="fas fa-table mr-1"></i>
+            <i class="fas fa-university mr-1"></i>
             Admission Headers
         </div>
         <div class="card-body">
@@ -202,7 +204,7 @@ SELECT publisher.*, COALESCE(CONVERT(VARCHAR,updatedate, 105), '00-00-0000') AS 
                             <td>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <a class="myedit" href="Admission_Headers.aspx?edit=<%= reader["ah_id"].ToString().Trim() %>"><i class="btn btn-primary">Edit</i></a>
+                                        <a class="myedit" href="Admission_Headers.aspx?edit=<%= reader["ah_id"].ToString().Trim() %>"><i class="btn btn-primary"><i class="fas fa-edit"></i>&nbsp; Edit</i></a>
                                         </a>
                                     </div>
                                 </div>
@@ -210,7 +212,7 @@ SELECT publisher.*, COALESCE(CONVERT(VARCHAR,updatedate, 105), '00-00-0000') AS 
                             <td>
                                 <div class="col-md-2">
                                     <div class="form-group text-center">
-                                        <a class="delete" href="Admission_Headers.aspx?delete=<%= reader["ah_id"].ToString().Trim() %>"><i class="btn btn-danger">Delete</i></a>
+                                        <a class="delete" href="Admission_Headers.aspx?delete=<%= reader["ah_id"].ToString().Trim() %>"><i class="btn btn-danger"><i class="fas fa-trash"></i>&nbsp; Delete</i></a>
                                     </div>
                                 </div>
                             </td>

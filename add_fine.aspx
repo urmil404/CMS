@@ -65,6 +65,10 @@
                                         <div class="courses-filter">
                                             <div class="tab-pane" id="change-password">
                                                 <div class="card mb-4 my-4 mx-4">
+                                                    <div class="card-header bg-dark text-white">
+                                                    <i class="fas fa-book-open mr-1"></i>
+                                                    Add Fines
+                                                </div>
                                                     <div class="card-body">
                                                         <div class="form-group">
                                                             <asp:Label runat="server" AssociatedControlID="ddl_student" ID="ddl_student_name">Student Name</asp:Label>
@@ -105,7 +109,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="card-footer pb-2">
-                                                        <asp:Button CssClass="btn btn-sm purple" Text="Add Fine" ID="txt_Add_Fine" runat="server" OnClick="addfine" />
+                                                        <asp:LinkButton CssClass="btn btn-success" Text="Add Fine" ID="txt_Add_Fine" runat="server" OnClick="addfine">
+                                                          <i class="ti-plus "></i>&nbsp; Add Fine
+                                                    </asp:LinkButton>
                                                     </div>
                                                 </div>
                                             </div>
@@ -154,7 +160,7 @@
                                                                     <td>
                                                                         <div class="col-md-2">
                                                                             <div class="form-group">
-                                                                                <a class="delete" href="add_fine.aspx?pay=<%= reader["f_id"].ToString().Trim() %>"><i class="btn btn-danger">Pay</i></a>
+                                                                                <a class="delete" href="add_fine.aspx?pay=<%= reader["f_id"].ToString().Trim() %>"><i class="btn btn-sm black"><i class="ti-money"></i>&nbsp;    Pay</i></a>
                                                                             </div>
                                                                         </div>
                                                                     </td>

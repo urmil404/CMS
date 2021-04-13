@@ -31,7 +31,7 @@ public partial class student_fine : System.Web.UI.Page
         int res = (int)cmd.ExecuteNonQuery();
         if(Convert.ToBoolean(res))
         {
-            Session["fine"] = true;
+            Session["fine"] = false;
             Helper.setSmsg("Fine Payed Successfully.");
             Response.Redirect("student_profile.aspx");
         }

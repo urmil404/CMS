@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="faculty_profile.aspx.cs" Inherits="faculty_profile" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContent" runat="Server">
 
@@ -199,7 +199,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-footer pb-2">
-                                                    <asp:Button CssClass="btn btn-success" Text="Add Assignment" ID="btn_Add_assignment" runat="server" OnClick="add_assignment" />
+                                                    <asp:LinkButton CssClass="btn btn-success" Text="Add Assignment" ID="btn_Add_assignment" runat="server" OnClick="add_assignment">
+                                                          <i class="ti-plus "></i>&nbsp; Add Assignment</i>
+                                                    </asp:LinkButton>
                                                 </div>
                                             </div>
 
@@ -253,7 +255,7 @@
                                                                                 <% if (reader["a_file"].ToString().Trim() != "no assignmets available")
                                                                                    {
                                                                                 %>
-                                                                                <a class="myedit" href="../public/assignments/<%=reader["a_file"].ToString().Trim() %>" target="_blank"><i class="btn btn-sm green">Download</i></a>
+                                                                                <a class="myedit" href="../public/assignments/<%=reader["a_file"].ToString().Trim() %>" target="_blank"><i class="btn btn-sm green"><i class="ti-download"></i>&nbsp;    Download</i></a>
                                                                                 </a>
                                            <%
                                                                                    }
@@ -264,14 +266,14 @@
                                                                     <td>
                                                                         <div class="col-md-2">
                                                                             <div class="form-group">
-                                                                                <a class="delete" href="view_submissions.aspx?view=<%= reader["a_id"].ToString().Trim() %>"><i class="btn btn-sm purple">View</i></a>
+                                                                                <a class="delete" href="view_submissions.aspx?view=<%= reader["a_id"].ToString().Trim() %>"><i class="btn btn-sm purple"><i class="ti-eye"></i>&nbsp;    View</i></a>
                                                                             </div>
                                                                         </div>
                                                                     </td>
                                                                     <td>
                                                                         <div class="col-md-2">
                                                                             <div class="form-group">
-                                                                                <a class="delete" href="faculty_profile.aspx?delete=<%= reader["a_id"].ToString().Trim() %>"><i class="btn btn-sm red">Delete</i></a>
+                                                                                <a class="delete" href="faculty_profile.aspx?delete=<%= reader["a_id"].ToString().Trim() %>"><i class="btn btn-sm red"><i class="ti-trash"></i>&nbsp;    Delete</i></a>
                                                                             </div>
                                                                         </div>
                                                                     </td>
@@ -299,7 +301,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
+
                                     <div class="tab-pane" id="change-password">
                                         <div class="profile-head">
                                             <div class="container">
@@ -308,7 +310,7 @@
                                                         <h3>Pending Fines</h3>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <button type="button" class="btn btn-sm red float-right" onclick="location.href='add_fine.aspx';">Add Fine</button>
+                                                        <button type="button" class="btn btn-warning float-right" onclick="location.href='add_fine.aspx';"><i class="ti-plus"></i>&nbsp; Add Fine</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -357,7 +359,7 @@
                                                             <td>
                                                                 <div class="col-md-2">
                                                                     <div class="form-group">
-                                                                        <a class="delete" href="faculty_profile.aspx?deletefine=<%= reader["f_id"].ToString().Trim() %>"><i class="btn btn-danger">Delete</i></a>
+                                                                        <a class="delete" href="faculty_profile.aspx?deletefine=<%= reader["f_id"].ToString().Trim() %>"><i class="btn btn-sm red">  <i class="ti-trash"></i>&nbsp;    Delete</i></a>
                                                                     </div>
                                                                 </div>
                                                             </td>

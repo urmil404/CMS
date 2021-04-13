@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContent" runat="Server">
     <div class="page-content bg-white">
@@ -71,7 +72,8 @@
                                                         <h3>My Admissions</h3>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <button type="button" class="btn btn-sm red float-right" onclick="location.href='admission.aspx';">New Admission</button>
+                                                        <button type="button" class="btn btn-sm red float-right" onclick="location.href='admission.aspx';"><i class="ti-plus"></i>&nbsp; New Admission</button>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -132,39 +134,28 @@
                                                                     <td>
                                                                         <%= reader["ad_status"].ToString().Trim() %>
                                                                     </td>
-                                                                    <td></td>
-                                                                    <td>
+                                                                     <td>
                                                                         <div class="col-md-2">
                                                                             <div class="form-group">
                                                                                 <%
-                                                                             
-                                                                       //Boolean fl = Convert.ToBoolean(reader["sub_id"]);
-                                                                       //Boolean fl = reader["ad_status"] != "pending";
-                                                                                %>
-                                                                                <%
-                                                                       if (reader["ad_status"] == "Approved")
+                                                                       if (reader["ad_status"].ToString().Trim() == "Approved")
                                                                        {
                                                                                 %>
                                                                                 <a class="myedit" href="Print_Admission.aspx?id=<%= reader["ad_id"].ToString().Trim() %>"><i
-                                                                                    class="btn btn-sm green">Print</i></a>
+                                                                                    class="btn btn-sm green">i class="ti-unlock"></i>&nbsp;    Print</i></a>
                                                                                 </a>
                                                                                 <%
-                                                                        }
+                                                                       }
                                                                        else
                                                                        {
                                                                                 %>
-                                                                               <%-- <a class="myedit" href="student_profile.aspx"><i
-                                                                                    class="btn btn-sm green" desabled>Print</i></a>
-                                                                                </a>--%>
-                                                                                <input id="endDate"class="btn btn-sm black" data-ng-disabled="dateRange!=='Cm'" size="10" maxlength="10" data-ng-model="endDate" validate-date="" name="endDate" disabled=""/>
+                                                                                 <a class="myedit" href="student_profile.aspx" class="btn btn-sm black" value="Wait" data-ng-disabled="dateRange!=='Cm'" disabled=""><i class="btn btn-sm black"><i class="ti-lock"></i>&nbsp;    Lock</i></a>
                                                                                 <%
-                                                                           
-                                                                        }
+                                                                       }
                                                                                 %>
                                                                             </div>
                                                                         </div>
                                                                     </td>
-
                                                                 </tr>
                                                                 <% } %>
                                                             </tbody>
@@ -243,18 +234,18 @@
                                                                             <% if (reader["a_file"].ToString().Trim() != "no assignmets available")
                                                                                {
                                                                             %>
-                                                                            <a class="myedit" href="../public/assignments/<%=reader["a_file"].ToString().Trim() %>" target="_blank"><i class="btn btn-sm green">Download</i></a>
-                                                                            </a>
-                                           <%
+                                                                            <a class="myedit" href="../public/assignments/<%=reader["a_file"].ToString().Trim() %>" target="_blank"><i class="btn btn-sm pink"><i class="ti-download"></i>&nbsp;    Download</i></a>
+
+                                                                            <%
                                                                                }
-                                           %>
+                                                                            %>
                                                                         </div>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="col-md-2">
                                                                         <div class="form-group">
-                                                                            <a class="myedit" href="student_assignments.aspx?upload=<%= reader["a_id"].ToString().Trim() %>"><i class="btn btn-sm blue">Upload</i></a>
+                                                                            <a class="myedit" href="student_assignments.aspx?upload=<%= reader["a_id"].ToString().Trim() %>"><i class="btn btn-sm purple"><i class="ti-upload"></i>&nbsp;    Upload</i></a>
                                                                         </div>
                                                                     </div>
                                                                 </td>

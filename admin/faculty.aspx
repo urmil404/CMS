@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/MasterPage.master" AutoEventWireup="true" CodeFile="faculty.aspx.cs" Inherits="admin_faculty" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Content_BForm" Runat="Server">
 </asp:Content>
@@ -13,7 +15,7 @@
     </div>
     <div class="card my-4">
         <div class="card-header bg-dark text-white">
-            <i class="fas fa-table mr-1"></i>
+            <i class="fas fa-chalkboard-teacher mr-1"></i>
             Add Faculty
         </div>
         <div class="card-body">
@@ -133,7 +135,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="Content_AForm" Runat="Server">
     <div class="card mb-4" runat="server" id="area_Faculty_list">
         <div class="card-header bg-dark text-white">
-            <i class="fas fa-table mr-1"></i>
+            <i class="fas fa-chalkboard-teacher mr-1"></i>
             Faculties
         </div>
         <div class="card-body overflow-auto">
@@ -191,7 +193,7 @@
                         <td>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <a class="myedit" href="faculty.aspx?edit=<%= reader["f_id"].ToString().Trim() %>"><i class="btn btn-primary">Edit</i></a>
+                                    <a class="myedit" href="faculty.aspx?edit=<%= reader["f_id"].ToString().Trim() %>"><i class="btn btn-primary"><i class="fas fa-edit"></i>&nbsp; Edit</i></i></a>
                                     </a>
                                 </div>
                             </div>
@@ -199,7 +201,7 @@
                         <td>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <a class="myedit" href="faculty.aspx?delete=<%= reader["f_id"].ToString().Trim() %>"><i class="btn btn-danger">Delete</i></a>
+                                    <a class="myedit" href="faculty.aspx?delete=<%= reader["f_id"].ToString().Trim() %>"><i class="btn btn-danger"><i class="fas fa-trash"></i>&nbsp; Delete</i></i></a>
                                 </div>
                             </div>
                         </td>

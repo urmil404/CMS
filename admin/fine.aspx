@@ -7,7 +7,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Content_Form" runat="Server">
     <div class="card mb-4 my-4">
         <div class="card-header bg-dark text-white">
-            <i class="fas fa-table mr-1"></i>
+            <i class="fas fa-hand-holding-usd mr-1"></i>
             Add Fine
         </div>
         <div class="card-body">
@@ -57,7 +57,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="Content_AForm" runat="Server">
      <div class="card mb-4 my-4" runat="server" id="area_assignment_list">
         <div class="card-header bg-dark text-white">
-            <i class="fas fa-table mr-1"></i>
+            <i class="fas fa-hand-holding-usd mr-1"></i>
             Fines
         </div>
         <div class="card-body overflow-auto">
@@ -99,7 +99,7 @@
                         <td>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <a class="delete" href="fine.aspx?delete=<%= reader["f_id"].ToString().Trim() %>"><i class="btn btn-danger">Delete</i></a>
+                                    <a class="delete" href="fine.aspx?delete=<%= reader["f_id"].ToString().Trim() %>"><i class="btn btn-danger"><i class="fas fa-trash"></i>&nbsp; Delete</i></a>
                                 </div>
                             </div>
                         </td>

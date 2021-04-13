@@ -34,7 +34,7 @@ public partial class Client_login : System.Web.UI.Page
 
                 if (student_password == pass)
                 {
-                    Helper.setSmsg("Login Successfull");
+                    
                     Session["student_id"] = student_id;
                     Session["student_username"] = uname;
 
@@ -48,10 +48,11 @@ public partial class Client_login : System.Web.UI.Page
                     else
                     {
                         reader.Close();
-                        SqlCommand c = new SqlCommand("SELECT COUNT(*) FROM fine WHERE f_student = " + student_id + " AND f_status = 'unpaid'", con);
+                        SqlCommand c = new SqlCommand("SELECT COUNT(*) FROM fine WHERE f_student = " + student_id + " AND f_status = 'Pending'", con);
                         if (((int)c.ExecuteScalar()) > 0)
                         {
                             Session["fine"] = true;
+                            Helper.setAmsg("First pay your fine & then you can access your features");
                             Response.Redirect("student_fine.aspx");
                         }
                         else
@@ -60,6 +61,7 @@ public partial class Client_login : System.Web.UI.Page
                         }
                         Response.Redirect("Default.aspx");
                     }
+                    Helper.setSmsg("Login Successfull");
                 }
                 else
                 {

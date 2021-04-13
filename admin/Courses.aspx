@@ -13,7 +13,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Content_Form" runat="Server">
     <div class="card mb-4 my-4">
         <div class="card-header bg-dark text-white">
-            <i class="fas fa-table mr-1"></i>
+            <i class="fas fa-brain mr-1"></i>
             Add Course
         </div>
         <div class="card-body">
@@ -56,7 +56,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="Content_AForm" runat="Server">
     <div class="card mb-4" runat="server" id="area_user_list">
         <div class="card-header bg-dark text-white">
-            <i class="fas fa-table mr-1"></i>
+            <i class="fas fa-brain mr-1"></i>
             Courses
         </div>
         <div class="card-body">
@@ -101,7 +101,7 @@
                             <td>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <a class="myedit" href="Courses.aspx?edit=<%= reader["c_id"].ToString().Trim() %>"><i class="btn btn-primary">Edit</i></a>
+                                        <a class="myedit" href="Courses.aspx?edit=<%= reader["c_id"].ToString().Trim() %>"><i class="btn btn-primary"><i class="fas fa-edit"></i>&nbsp; Edit</i></a>
                                         </a>
                                     </div>
                                 </div>
@@ -109,7 +109,7 @@
                             <td>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <a class="delete" href="Courses.aspx?delete=<%= reader["c_id"].ToString().Trim() %>"><i class="btn btn-danger">Delete</i></a>
+                                        <a class="delete" href="Courses.aspx?delete=<%= reader["c_id"].ToString().Trim() %>"><i class="btn btn-danger"><i class="fas fa-trash"></i>&nbsp; Delete</i></a>
                                     </div>
                                 </div>
                             </td>

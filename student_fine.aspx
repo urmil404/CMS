@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="student_fine.aspx.cs" Inherits="student_fine" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContent" runat="Server">
     <div class="page-content bg-white">
@@ -64,7 +66,7 @@
                                             <div class="container-fluid">
                                                 <div class="card mb-4" runat="server" id="area_assignment_list">
                                                     <div class="card-header bg-dark text-white">
-                                                        <i class="fas fa-table mr-1"></i>
+                                                        <i class="fas fa-money-check-alt mr-1"></i>
                                                         Fines
                                                     </div>
                                                     <div class="card-body overflow-auto">
@@ -102,7 +104,7 @@
                                                                     <td>
                                                                         <div class="col-md-2">
                                                                             <div class="form-group">
-                                                                                <a class="delete" href="student_fine.aspx?pay=<%= reader["f_id"].ToString().Trim() %>"><i class="btn btn-danger">Pay</i></a>
+                                                                                <a class="delete" href="student_fine.aspx?pay=<%= reader["f_id"].ToString().Trim() %>"><i class="btn btn-sm black"><i class="ti-money "></i>&nbsp; Pay</i></a>
                                                                             </div>
                                                                         </div>
                                                                     </td>

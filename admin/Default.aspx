@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/admin/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="admin_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Content_Form" runat="Server">
@@ -12,7 +14,7 @@
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-primary text-white mb-4">
                     <div class="card-body">
-                        <h5>Total Students</h5>
+                        <h5><a href="students.aspx"></a><i class="fas fa-user-graduate mr-1"></i>Total Students</h5>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <h5 class="text-white stretched-link">
@@ -31,7 +33,7 @@
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-warning text-white mb-4">
                     <div class="card-body">
-                        <h5>Total Course</h5>
+                       <h5><a href="students.aspx"></a><i class="fas fa-book-open mr-1"></i>Total Course</h5>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <h5 class="text-white stretched-link">
@@ -50,7 +52,7 @@
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-success text-white mb-4">
                     <div class="card-body">
-                        <h5>Total Faculties</h5>
+                        <h5><a href="students.aspx"></a><i class="fas fa-chalkboard-teacher mr-1"></i>Total Faculty</h5>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <h5 class="text-white stretched-link">100</h5>
@@ -60,7 +62,7 @@
             <div class="col-xl-3 col-md-6">
                 <div class="card bg-dark text-white mb-4">
                     <div class="card-body">
-                        <h5>Total Admissions</h5>
+                         <h5><a href="students.aspx"></a><i class="fas fa-university mr-1"></i>Total Admissions</h5>
                     </div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <h5 class="text-white stretched-link">
